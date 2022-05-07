@@ -36,10 +36,10 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static" sx = {{background:'#141414'}}>
+    <AppBar position="static" sx = {{backgroundColor : "#070707"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LocalMoviesIcon fontSize = "large" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,color : "#e87800" }} />
+          <LocalMoviesIcon fontSize = "large" sx={{ display: { xs: 'none', md: 'flex',color : "#e87800" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -134,7 +134,8 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
-          <Button color="inherit" size ="large" variant="outlined" sx = {{borderColor : "#e87800", color : "#e87800"}} >Login</Button>
+          <Button color="inherit" size ="large" variant="outlined" sx = {{borderColor : "#e87800", color : "#e87800", fontSize:"16px", fontWeight:"bold"}} >Login</Button>
+          <Button color="inherit" size ="large" variant="outlined" sx = {{borderColor : "#e87800", color : "#e87800", ml : 3, fontSize:"16px", fontWeight:"bold"}} >Register</Button>
         </Toolbar>
       </Container>
     </AppBar>
