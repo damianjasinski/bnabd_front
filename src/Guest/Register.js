@@ -8,23 +8,43 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+import logo from "../Resource/cinema-09.jpg";
 
 const theme = createTheme({
   palette: {
-    type: "dark",
+    type: "darkTheme",
   },
-
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
+const backgroundStyle = {
+  paperContainer: {
+    backgroundImage: `url(${logo})`,
+    borderRadius: "0",
+  },
+};
 
-}));
+const StyledButton = styled(Button)`
+  background-color: black;
+  color: #e87800;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 16px;
+  &:hover {
+    background-color: #2f2f31;
+  }
+  &:focus {
+    background-color: gray;
+  }
+`;
+
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   color: theme.palette.text.secondary,
+
+// }));
 
 export default function Register() {
   const [firstName, setfirstName] = useState("");
@@ -74,88 +94,105 @@ export default function Register() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Box sx = {{height:"100%"}}>
-        <Grid container spacing={2}>
-          <Grid item lg={8}>
-            <Box
-              sx={{
-                color: "text.secondary",
+      <Paper
+        style={backgroundStyle.paperContainer}
+        sx={{ backgroundSize: "auto" }}
+      >
+        <Box sx={{ mt: 2 }}>
+          <Grid container spacing={2}>
+            <Grid item lg={7} sx={{}}>
+              <Box
+                sx={{
+                  color: "text.secondary",
+                }}
+              ></Box>
+            </Grid>
 
-                m: 3,
-              }}
+            <Grid
+              spacing={0}
+              style={{ minHeight: "100vh" }}
+              item
+              lg={5}
+              sx={{ bgcolor: "white" }}
+              container
+              
             >
-              <Item>xs=8</Item>
-            </Box>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  color: "text.secondary",
+                  mx: "auto"
+                }}
+              >
+                <form noValidate onSubmit={handleSubmit}>
+                  <Box sx={{ mx: 5, p: 10 }}>
+                    <Box sx={{ my: 3 }}>
+                      <TextField
+                        onChange={(e) => setfirstName(e.target.value)}
+                        label="Imię"
+                        variant="outlined"
+                        color="secondary"
+                        fullWidth
+                        required
+                        InputProps={{ style: { fontSize: 20 } }}
+                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        error={firstNameError}
+                        sx={{ width: "30vh" }}
+                      />
+                    </Box>
+                    <Box sx={{ my: 3 }}>
+                      <TextField
+                        sx={{ width: "30vh" }}
+                        onChange={(e) => setEmail(e.target.value)}
+                        label="e-mail"
+                        variant="outlined"
+                        color="secondary"
+                        fullWidth
+                        required
+                        InputProps={{ style: { fontSize: 20 } }}
+                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        error={emailError}
+                      />
+                    </Box>
+
+                    <Box sx={{ my: 3 }}>
+                      <TextField
+                        sx={{ width: "30vh" }}
+                        onChange={(e) => setPassword(e.target.value)}
+                        label="Hasło"
+                        variant="outlined"
+                        color="secondary"
+                        fullWidth
+                        required
+                        InputProps={{ style: { fontSize: 20 } }}
+                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        error={passwordError}
+                      />
+                    </Box>
+                    <Box sx={{ my: 3 }}>
+                      <TextField
+                        sx={{ width: "30vh" }}
+                        onChange={(e) => setRetryPassword(e.target.value)}
+                        label="Powtórz hasło"
+                        variant="outlined"
+                        color="secondary"
+                        fullWidth
+                        InputProps={{ style: { fontSize: 22 } }}
+                        InputLabelProps={{ style: { fontSize: 22 } }}
+                        required
+                        error={retryPasswordError}
+                      />
+                    </Box>
+                    <StyledButton>Submit</StyledButton>
+                  </Box>
+                </form>
+              </Box>
+            </Grid>
           </Grid>
-
-          <Grid item lg={4}>
-            <Box
-              sx={{
-                color: "text.secondary",
-                m: 3,
-              }}
-            >
-              <form noValidate onSubmit={handleSubmit}>
-                <Box sx={{ my: 3 }}>
-                  <TextField
-                    onChange={(e) => setfirstName(e.target.value)}
-                    label="Imię"
-                    variant="outlined"
-                    color="secondary"
-                    fullWidth
-                    required
-                    error={firstNameError}
-                  />
-                </Box>
-                <Box sx={{ my: 3 }}>
-                  <TextField
-                    onChange={(e) => setEmail(e.target.value)}
-                    label="e-mail"
-                    variant="outlined"
-                    color="secondary"
-                    fullWidth
-                    required
-                    error={emailError}
-                  />
-                </Box>
-
-                <Box sx={{ my: 3 }}>
-                  <TextField
-                    onChange={(e) => setPassword(e.target.value)}
-                    label="Hasło"
-                    variant="outlined"
-                    color="secondary"
-                    fullWidth
-                    required
-                    error={passwordError}
-                  />
-                </Box>
-                <Box sx={{ my: 3 }}>
-                  <TextField
-                    onChange={(e) => setRetryPassword(e.target.value)}
-                    label="Powtórz hasło"
-                    variant="outlined"
-                    color="secondary"
-                    fullWidth
-                    required
-                    error={retryPasswordError}
-                  />
-                </Box>
-
-                <Button
-                  type="submit"
-                  color="secondary"
-                  variant="contained"
-                  endIcon={<LoginIcon />}
-                >
-                  Submit
-                </Button>
-              </form>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
-    
+        </Box>
+      </Paper>
     </ThemeProvider>
   );
 }
