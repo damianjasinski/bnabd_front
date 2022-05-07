@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import logo from "./logo.svg";
+import "./App.css";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Reroute from "./routes";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
 function App() {
   return (
-      <ThemeProvider theme = {darkTheme}>
-    <div>
-        
-      {/* <Header /> */}
-       <Reroute />
-      {/* <Footer /> */}
-    </div>
-      </ThemeProvider>
+    <ThemeProvider theme={darkTheme}>
+      <div>
+        {/* <Header /> */}
+        <Reroute />
+        {/* <Footer /> */}
+      </div>
+    </ThemeProvider>
   );
 }
 
