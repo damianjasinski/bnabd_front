@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
+const axios = require("axios").default;
 
 const theme = createTheme({
   palette: {
@@ -37,60 +38,72 @@ const StyledButton = styled(Button)`
   }
 `;
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-
-// }));
-
 export default function Register() {
-  const [firstName, setfirstName] = useState("");
+  const [response, setResponse] = useState([]);
+  const [inputs, setInputs] = useState({"firstname" : "", "surname" : "", "email" : "", "password" : "", "password2" : ""});
   const [firstNameError, setfirstNameError] = useState(false);
-
-  const [email, setEmail] = useState("");
+  const [surnameError, setsurnameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
-
-  const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
-
-  const [retryPassword, setRetryPassword] = useState("");
   const [retryPasswordError, setRetryPasswordError] = useState(false);
+
+  const signupRequest = () => {
+    const user = {firstname : inputs.firstname, surname : inputs.surname, email : inputs.email, password : inputs.password, password2 : inputs.password2}
+    const data = axios
+      .post("http://localhost:8080/api/login/signup", user)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setResponse(data.data);
+}
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+    console.log(inputs);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (firstName === "") {
+    if (inputs.firstname === "") {
       setfirstNameError(true);
     } else {
       setfirstNameError(false);
     }
 
-    if (email === "") {
+    if (inputs.surname === "") {
+      setsurnameError(true);
+    } else {
+      setsurnameError(false);
+    }
+
+    if (inputs.email === "") {
       setEmailError(true);
     } else {
       setEmailError(false);
     }
 
-    if (password === "") {
+    if (inputs.password === "") {
       setPasswordError(true);
     } else {
       setPasswordError(false);
     }
 
-    if (retryPassword === "") {
+    if (inputs.password2 === "") {
       setRetryPasswordError(true);
     } else {
       setRetryPasswordError(false);
     }
-
-    console.log(firstName);
-    console.log(email);
-    console.log(password);
-    console.log(retryPassword);
+    if (firstNameError === false && surnameError === false && emailError === false && passwordError === false && retryPasswordError === false) {
+        signupRequest();
+      }
   };
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
@@ -115,41 +128,67 @@ export default function Register() {
               lg={5}
               sx={{ bgcolor: "white" }}
               container
-              
             >
               <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
                 sx={{
                   color: "text.secondary",
-                  mx: "auto"
+                  mx: "auto",
+                  mt: "auto",
+                }}
+              >
+                <Typography variant="h1" component="h2">
+                  Zarejestruj się
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  color: "text.secondary",
+                  mx: "auto",
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
                   <Box sx={{ mx: 5, p: 10 }}>
-                    <Box sx={{ my: 3 }}>
+                    <Box>
                       <TextField
-                        onChange={(e) => setfirstName(e.target.value)}
+                        onChange={handleChange}
                         label="Imię"
                         variant="outlined"
                         color="secondary"
                         fullWidth
+                        name="firstname"
                         required
                         InputProps={{ style: { fontSize: 20 } }}
                         InputLabelProps={{ style: { fontSize: 20 } }}
                         error={firstNameError}
-                        sx={{ width: "30vh" }}
+                        sx={{ width: "40vh" }}
                       />
                     </Box>
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "30vh" }}
-                        onChange={(e) => setEmail(e.target.value)}
+                        sx={{ width: "40vh" }}
+                        onChange={handleChange}
+                        label="Nazwisko"
+                        variant="outlined"
+                        color="secondary"
+                        fullWidth
+                        name="surname"
+                        required
+                        InputProps={{ style: { fontSize: 20 } }}
+                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        error={surnameError}
+                      />
+                    </Box>
+
+                    <Box sx={{ my: 3 }}>
+                      <TextField
+                        sx={{ width: "40vh" }}
+                        onChange={handleChange}
                         label="e-mail"
                         variant="outlined"
                         color="secondary"
                         fullWidth
+                        name="email"
                         required
                         InputProps={{ style: { fontSize: 20 } }}
                         InputLabelProps={{ style: { fontSize: 20 } }}
@@ -159,13 +198,15 @@ export default function Register() {
 
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "30vh" }}
-                        onChange={(e) => setPassword(e.target.value)}
+                        sx={{ width: "40vh" }}
+                        onChange={handleChange}
                         label="Hasło"
                         variant="outlined"
                         color="secondary"
                         fullWidth
+                        name="password"
                         required
+                        type = "password"
                         InputProps={{ style: { fontSize: 20 } }}
                         InputLabelProps={{ style: { fontSize: 20 } }}
                         error={passwordError}
@@ -173,19 +214,21 @@ export default function Register() {
                     </Box>
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "30vh" }}
-                        onChange={(e) => setRetryPassword(e.target.value)}
+                        sx={{ width: "40vh" }}
+                        onChange={handleChange}
                         label="Powtórz hasło"
                         variant="outlined"
                         color="secondary"
                         fullWidth
+                        name="password2"
+                        type = "password"
                         InputProps={{ style: { fontSize: 22 } }}
                         InputLabelProps={{ style: { fontSize: 22 } }}
                         required
                         error={retryPasswordError}
                       />
                     </Box>
-                    <StyledButton>Submit</StyledButton>
+                    <StyledButton onClick={handleSubmit}>Submit</StyledButton>
                   </Box>
                 </form>
               </Box>
