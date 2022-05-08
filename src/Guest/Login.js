@@ -10,6 +10,10 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
+import {Navigate} from "react-router-dom"
+
+
+
 const axios = require("axios").default;
 
 const theme = createTheme({
@@ -45,14 +49,16 @@ export default function Register() {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [inputs, setInputs] = useState({"email":"","password":""});
-
+  const [logged, setLoggedIn] = useState();
 
   const loginRequest = () => {
       const user = {email : inputs.email, password : inputs.password}
       const data = axios
         .post("http://localhost:8080/api/login/signin", user)
         .then(function (response) {
-          console.log(response.data);
+          sessionStorage.setItem("jwt", response.data.jwt)
+          sessionStorage.setItem("role", "ADMIN")
+          setLoggedIn(true)
         })
         .catch(function (error) {
           console.log(error);
@@ -87,6 +93,11 @@ export default function Register() {
     }
   };
 
+  //check if user is logged in
+  if (sessionStorage.getItem("jwt")) {
+    return <Navigate to="/redirect" />
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
@@ -119,7 +130,7 @@ export default function Register() {
                   mt: "auto",
                 }}
               >
-                <Typography variant="h1" component="h2">
+                <Typography variant="h2" component="h2">
                   Zaloguj się
                 </Typography>
               </Box>

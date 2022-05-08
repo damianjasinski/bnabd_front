@@ -136,7 +136,7 @@ export default function Register() {
                   mt: "auto",
                 }}
               >
-                <Typography variant="h1" component="h2">
+                <Typography variant="h2" component="h2">
                   Zarejestruj się
                 </Typography>
               </Box>
