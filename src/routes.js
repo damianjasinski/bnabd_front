@@ -6,6 +6,7 @@ import ManageSettings from "./User/ManageSettings";
 import Orders from "./Order/Order";
 import Payment from "./Payment/Payment";
 import Welcome from "./Welcome/Welcome";
+import RedirectCheck from "./Util/RedirectCheck";
 
 const Reroute = () => {
     return(
@@ -13,6 +14,7 @@ const Reroute = () => {
         <Routes>
             <Route exact path="/" element = {<Welcome/>} />
             <Route path="/login" element = {<Login />} />
+            <Route path="/redirect" element = {<RedirectCheck />} />
             <Route path="/register" element = {<Register />} />
             <Route path="/seances" element = {<Welcome />} />
             <Route path="/managesettings" element = {<ManageSettings />} />
