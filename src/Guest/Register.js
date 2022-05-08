@@ -25,7 +25,9 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-  background-color: black;
+  border-style:solid;
+  border-width:1.5px;
+  border-radius:5px;
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
@@ -40,7 +42,7 @@ const StyledButton = styled(Button)`
 
 export default function Register() {
   const [response, setResponse] = useState([]);
-  const [inputs, setInputs] = useState({"firstname" : "", "surname" : "", "email" : "", "password" : "", "password2" : ""});
+  const [inputs, setInputs] = useState({ "firstname": "", "surname": "", "email": "", "password": "", "password2": "" });
   const [firstNameError, setfirstNameError] = useState(false);
   const [surnameError, setsurnameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -48,7 +50,7 @@ export default function Register() {
   const [retryPasswordError, setRetryPasswordError] = useState(false);
 
   const signupRequest = () => {
-    const user = {firstname : inputs.firstname, surname : inputs.surname, email : inputs.email, password : inputs.password, password2 : inputs.password2}
+    const user = { firstname: inputs.firstname, surname: inputs.surname, email: inputs.email, password: inputs.password, password2: inputs.password2 }
     const data = axios
       .post("http://localhost:8080/api/login/signup", user)
       .then(function (response) {
@@ -58,7 +60,7 @@ export default function Register() {
         console.log(error);
       });
     setResponse(data.data);
-}
+  }
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -100,8 +102,8 @@ export default function Register() {
       setRetryPasswordError(false);
     }
     if (firstNameError === false && surnameError === false && emailError === false && passwordError === false && retryPasswordError === false) {
-        signupRequest();
-      }
+      signupRequest();
+    }
   };
 
   return (
@@ -206,7 +208,7 @@ export default function Register() {
                         fullWidth
                         name="password"
                         required
-                        type = "password"
+                        type="password"
                         InputProps={{ style: { fontSize: 20 } }}
                         InputLabelProps={{ style: { fontSize: 20 } }}
                         error={passwordError}
@@ -221,7 +223,7 @@ export default function Register() {
                         color="secondary"
                         fullWidth
                         name="password2"
-                        type = "password"
+                        type="password"
                         InputProps={{ style: { fontSize: 22 } }}
                         InputLabelProps={{ style: { fontSize: 22 } }}
                         required
