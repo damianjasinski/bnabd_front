@@ -36,7 +36,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="fixed" sx = {{backgroundColor : "#1C1D1D"}}>
+    <AppBar position="sticky" sx = {{backgroundColor : "#1C1D1D"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LocalMoviesIcon fontSize = "large" sx={{ display: { xs: 'none', md: 'flex',color : "#e87800" }, mr: 1 }} />
