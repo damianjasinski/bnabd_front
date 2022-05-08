@@ -10,8 +10,9 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
-import {Navigate} from "react-router-dom"
-
+import { Navigate } from "react-router-dom"
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 
 const axios = require("axios").default;
@@ -30,7 +31,9 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-  background-color: black;
+  border-style:solid;
+  border-width:1.5px;
+  border-radius:5px;
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
@@ -48,22 +51,22 @@ export default function Register() {
   const [response, setResponse] = useState([]);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [inputs, setInputs] = useState({"email":"","password":""});
+  const [inputs, setInputs] = useState({ "email": "", "password": "" });
   const [logged, setLoggedIn] = useState();
 
   const loginRequest = () => {
-      const user = {email : inputs.email, password : inputs.password}
-      const data = axios
-        .post("http://localhost:8080/api/login/signin", user)
-        .then(function (response) {
-          sessionStorage.setItem("jwt", response.data.jwt)
-          sessionStorage.setItem("role", "ADMIN")
-          setLoggedIn(true)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      setResponse(data.data);
+    const user = { email: inputs.email, password: inputs.password }
+    const data = axios
+      .post("http://localhost:8080/api/login/signin", user)
+      .then(function (response) {
+        sessionStorage.setItem("jwt", response.data.jwt)
+        sessionStorage.setItem("role", "ADMIN")
+        setLoggedIn(true)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setResponse(data.data);
   }
 
   const handleChange = (event) => {
@@ -78,13 +81,13 @@ export default function Register() {
 
     if (inputs.email === "") {
       setEmailError(true);
-    } 
+    }
     else {
       setEmailError(false);
     }
     if (inputs.password === "") {
       setPasswordError(true);
-    } 
+    }
     else {
       setPasswordError(false);
     }
@@ -149,7 +152,7 @@ export default function Register() {
                         onChange={handleChange}
                         label="e-mail"
                         variant="outlined"
-                        name = "email"
+                        name="email"
                         color="secondary"
                         fullWidth
                         required
@@ -164,9 +167,9 @@ export default function Register() {
                         sx={{ width: "40vh" }}
                         onChange={handleChange}
                         label="Hasło"
-                        type = "password"
+                        type="password"
                         variant="outlined"
-                        name = "password"
+                        name="password"
                         color="secondary"
                         fullWidth
                         required
@@ -175,7 +178,7 @@ export default function Register() {
                         error={passwordError}
                       />
                     </Box>
-                    <StyledButton onClick = {handleSubmit}>Submit</StyledButton>
+                    <StyledButton onClick={handleSubmit}>Submit</StyledButton>
                   </Box>
                 </form>
               </Box>
@@ -183,6 +186,7 @@ export default function Register() {
           </Grid>
         </Box>
       </Paper>
+    
     </ThemeProvider>
   );
 }
