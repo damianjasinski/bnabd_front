@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
+import { Navigate } from "react-router-dom";
 const axios = require("axios").default;
 
 const theme = createTheme({
@@ -25,9 +26,9 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-  border-style:solid;
-  border-width:1.5px;
-  border-radius:5px;
+  border-style: solid;
+  border-width: 1.5px;
+  border-radius: 5px;
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
@@ -42,7 +43,13 @@ const StyledButton = styled(Button)`
 
 export default function Register() {
   const [response, setResponse] = useState([]);
-  const [inputs, setInputs] = useState({ "firstname": "", "surname": "", "email": "", "password": "", "password2": "" });
+  const [inputs, setInputs] = useState({
+    firstname: "",
+    surname: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
   const [firstNameError, setfirstNameError] = useState(false);
   const [surnameError, setsurnameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -50,7 +57,13 @@ export default function Register() {
   const [retryPasswordError, setRetryPasswordError] = useState(false);
 
   const signupRequest = () => {
-    const user = { firstname: inputs.firstname, surname: inputs.surname, email: inputs.email, password: inputs.password, password2: inputs.password2 }
+    const user = {
+      firstname: inputs.firstname,
+      surname: inputs.surname,
+      email: inputs.email,
+      password: inputs.password,
+      password2: inputs.password2,
+    };
     const data = axios
       .post("http://localhost:8080/api/login/signup", user)
       .then(function (response) {
@@ -60,7 +73,7 @@ export default function Register() {
         console.log(error);
       });
     setResponse(data.data);
-  }
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -101,11 +114,22 @@ export default function Register() {
     } else {
       setRetryPasswordError(false);
     }
-    if (firstNameError === false && surnameError === false && emailError === false && passwordError === false && retryPasswordError === false) {
+    if (
+      firstNameError === false &&
+      surnameError === false &&
+      emailError === false &&
+      passwordError === false &&
+      retryPasswordError === false
+    ) {
       signupRequest();
     }
   };
 
+  //check if user is logged in
+  if (sessionStorage.getItem("jwt")) {
+    return <Navigate to="/redirect" />;
+  }
+    
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
