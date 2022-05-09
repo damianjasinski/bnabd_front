@@ -101,7 +101,7 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <LocalMoviesIcon color = "primary" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1}} />
+          <LocalMoviesIcon sx={{ display: { xs: 'flex', md: 'none', color : "#e87800"}, mr: 1}} />
           <Typography
             variant="h5"
             noWrap
@@ -112,13 +112,13 @@ const ResponsiveAppBar = () => {
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 600,
+              letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DCinema
           </Typography>
           <Box sx={{ flexGrow: 1, ml:15 , display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
