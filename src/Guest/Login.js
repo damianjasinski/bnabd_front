@@ -58,7 +58,7 @@ export default function Register() {
       .post("http://localhost:8080/api/login/signin", user)
       .then(function (response) {
         sessionStorage.setItem("jwt", response.data.jwt)
-        sessionStorage.setItem("role", "ADMIN")
+        sessionStorage.setItem("role", response.data.role)
         setLoggedIn(true)
       })
       .catch(function (error) {
