@@ -125,6 +125,10 @@ export default function Register() {
     }
   };
 
+  //check if user is logged in
+  if (sessionStorage.getItem("jwt")) {
+    return <Navigate to="/redirect" />;
+  }
     
   return (
     <ThemeProvider theme={theme}>
