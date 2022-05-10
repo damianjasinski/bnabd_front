@@ -102,13 +102,13 @@ export default function Register() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Paper
+      <Paper 
         style={backgroundStyle.paperContainer}
-        sx={{ backgroundSize: "auto" }}
+        sx={{ backgroundSize: "auto"  }}
       >
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 2  }}>
           <Grid container spacing={2}>
-            <Grid item lg={7} sx={{}}>
+            <Grid item lg={7} md = {6} sx={{}}>
               <Box
                 sx={{
                   color: "text.secondary",
@@ -121,6 +121,9 @@ export default function Register() {
               style={{ minHeight: "100vh" }}
               item
               lg={5}
+              md = {6}
+              sm = {12}
+            
               sx={{ bgcolor: "white" }}
               container
             >
@@ -130,7 +133,7 @@ export default function Register() {
                   mx: "auto",
                   mt: "auto",
                 }}
-              >
+                >
                 <Typography variant="h2" component="h2">
                   Zaloguj się
                 </Typography>
@@ -143,7 +146,7 @@ export default function Register() {
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box sx={{ mx: 5, p: 10 }}>
+                  <Box sm = {12} sx={{ mx: 5, p: 10 }}>
                     <Box sx={{ my: 3 }}>
                       <TextField
                         sx={{ width: "40vh" }}
