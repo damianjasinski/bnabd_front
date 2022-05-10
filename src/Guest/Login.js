@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
+
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom"
-
+import FormHelperText from '@mui/material/FormHelperText';
 
 const axios = require("axios").default;
 
@@ -130,12 +130,11 @@ export default function Register() {
             >
               <Box
                 sx={{
-                  color: "text.secondary",
                   mx: "auto",
                   mt: "auto",
                 }}
                 >
-                <Typography variant="h2" component="h2">
+                <Typography variant="h2" component="h2" color = "black">
                   Zaloguj się
                 </Typography>
               </Box>
@@ -147,38 +146,43 @@ export default function Register() {
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box sm = {12} sx={{ mx: 5, p: 10 }}>
-                    <Box sx={{ my: 3 }}>
+                  <Box sm = {12} sx={{ mx: 5, p: 6 }}>
+                    <Box >
                       <TextField
-                        sx={{ width: "40vh" }}
+                        
                         onChange={handleChange}
                         label="e-mail"
-                        variant="outlined"
                         name="email"
-                        color="secondary"
+                        variant="outlined"
+                        color="warning"
                         fullWidth
                         required
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={emailError}
+                        helperText={emailError ? "Źle wprowadzony mail" : ""}
+                        sx={{ width: "30vh" }}
                       />
                     </Box>
 
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "40vh" }}
+                      
                         onChange={handleChange}
                         label="Hasło"
                         type="password"
                         variant="outlined"
+                        color="warning"
                         name="password"
-                        color="secondary"
                         fullWidth
                         required
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={passwordError}
+                        helperText={passwordError ? "Źle wprowadzone hasło" : ""}
+                        sx={{ width: "30vh" }}
                       />
+
                     </Box>
                     <StyledButton onClick={handleSubmit}>Submit</StyledButton>
                   </Box>

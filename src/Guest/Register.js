@@ -157,12 +157,12 @@ export default function Register() {
             >
               <Box
                 sx={{
-                  color: "text.secondary",
                   mx: "auto",
                   mt: "auto",
+
                 }}
               >
-                <Typography variant="h2" component="h2">
+                <Typography variant="h2" component="h2" color = "black" sx = {{}}>
                   Zarejestruj się
                 </Typography>
               </Box>
@@ -174,82 +174,82 @@ export default function Register() {
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box sx={{ mx: 5, p: 10 }}>
+                  <Box sx={{ mx: 5, p: 6 }}>
                     <Box>
                       <TextField
                         onChange={handleChange}
                         label="Imię"
                         variant="outlined"
-                        color="secondary"
+                        color="warning"
                         fullWidth
                         name="firstname"
                         required
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={firstNameError}
-                        sx={{ width: "40vh" }}
+                        sx={{ width: "30vh" }}
                       />
                     </Box>
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "40vh" }}
+                        sx={{ width: "30vh" }}
                         onChange={handleChange}
                         label="Nazwisko"
                         variant="outlined"
-                        color="secondary"
+                        color="warning"
                         fullWidth
                         name="surname"
                         required
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={surnameError}
                       />
                     </Box>
 
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "40vh" }}
+                        sx={{ width: "30vh" }}
                         onChange={handleChange}
                         label="e-mail"
                         variant="outlined"
-                        color="secondary"
+                        color="warning"
                         fullWidth
                         name="email"
                         required
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={emailError}
                       />
                     </Box>
 
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "40vh" }}
+                        sx={{ width: "30vh" }}
                         onChange={handleChange}
                         label="Hasło"
                         variant="outlined"
-                        color="secondary"
+                        color="warning"
                         fullWidth
                         name="password"
                         required
                         type="password"
-                        InputProps={{ style: { fontSize: 20 } }}
-                        InputLabelProps={{ style: { fontSize: 20 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         error={passwordError}
                       />
                     </Box>
                     <Box sx={{ my: 3 }}>
                       <TextField
-                        sx={{ width: "40vh" }}
+                        sx={{ width: "30vh" }}
                         onChange={handleChange}
                         label="Powtórz hasło"
                         variant="outlined"
-                        color="secondary"
+                        color="warning"
                         fullWidth
                         name="password2"
                         type="password"
-                        InputProps={{ style: { fontSize: 22 } }}
-                        InputLabelProps={{ style: { fontSize: 22 } }}
+                        InputProps={{ style: { fontSize: 18 } }}
+                        InputLabelProps={{ style: { fontSize: 18 } }}
                         required
                         error={retryPasswordError}
                       />
