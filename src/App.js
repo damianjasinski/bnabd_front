@@ -5,7 +5,7 @@ import Reroute from "./routes";
 
 const darkTheme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
   },
 });
 function App() {
