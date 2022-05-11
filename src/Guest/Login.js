@@ -109,7 +109,7 @@ export default function Register() {
       >
         <Box sx={{ mt: 2  }}>
           <Grid container spacing={2}>
-            <Grid item lg={7} md = {6} sx={{}}>
+            <Grid item lg={7} sx={{}}>
               <Box
                 sx={{
                   color: "text.secondary",
@@ -122,8 +122,7 @@ export default function Register() {
               style={{ minHeight: "100vh" }}
               item
               lg={5}
-              md = {6}
-              sm = {12}
+
             
               sx={{ bgcolor: "white" }}
               container
@@ -146,7 +145,7 @@ export default function Register() {
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box sm = {12} sx={{ mx: 5, p: 6 }}>
+                  <Box sm = {12} sx={{ mx: 5, p: 10 }}>
                     <Box >
                       <TextField
                         
