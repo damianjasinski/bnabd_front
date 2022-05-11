@@ -127,7 +127,7 @@ const ResponsiveAppBar = () => {
           
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, ml: 3, display: 'block', letterSpacing: '.1rem', fontSize: "18px",fontWeight : "600", color : "#e87800"}}
+                sx={{ my: 1, ml: 3, display: 'block', letterSpacing: '.1rem', fontSize: "16px",fontWeight : "600", color : "#e87800"}}
               >
                 {page}
               </Button>
