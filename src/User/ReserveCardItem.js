@@ -12,14 +12,15 @@ import { Link } from "react-router-dom";
 const CardItem = (props) => {
   return (
     <Card>
-      <Grid container >
-        <Grid
-          item
-          xs={12}
-          md={12}
-        >
+      <Grid container sx={{ mx: "auto" }}>
+        <Grid item xs={12} md={7}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div"  sx={{ textAlign: "center" }}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ textAlign: "center" }}
+            >
               {props.seance.titles.name}
             </Typography>
             <Typography
@@ -31,8 +32,8 @@ const CardItem = (props) => {
             </Typography>
           </CardContent>
         </Grid>
-        <Grid container justifyContent="center" alignItems="center" xs={12} md={12}  >
-        <img src={props.seance.titles.imUrl}  height={320} />
+        <Grid align="center" justify="center" xs={12} md={5} sx={{ my: 1 }}>
+          <img src={props.seance.titles.imUrl} height={450} />
         </Grid>
       </Grid>
     </Card>
