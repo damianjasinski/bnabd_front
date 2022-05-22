@@ -29,7 +29,7 @@ const Seances = () => {
     const data = axios
       .get("http://localhost:8080/api/seance/get/current", {
         headers: {
-          Authorization: `Basic ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then(function (response) {
