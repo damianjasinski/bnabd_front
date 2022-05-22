@@ -8,7 +8,7 @@ const iconSize = "large"
 
 
 
-export default function Orders() {
+const Order = () => {
   var arr = Array(100).fill("error");
 
   const [seat, setSeatState] = useState(arr);
@@ -66,3 +66,4 @@ export default function Orders() {
     
   )
 }
+export default Order;
