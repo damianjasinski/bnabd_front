@@ -7,11 +7,11 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import { Link } from "react-router-dom";
 
 const CardItem = (props) => {
   return (
-    <Card sx={{ mx: 1}}>
+    <Card sx={{ mx: 1 }}>
       <Grid container spacing={2}>
         <Grid
           item
@@ -23,27 +23,39 @@ const CardItem = (props) => {
           }}
         >
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" >
+            <Typography gutterBottom variant="h5" component="div">
               {props.seance.titles.name}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx ={{textAlign : "left", mt : 2}}>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ textAlign: "left", mt: 2 }}
+            >
               Lizards are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica
             </Typography>
-            <Typography variant="h5" color="text.secondary" sx ={{mt : 6,  textAlign : "left"}}>
+            <Typography
+              variant="h5"
+              color="text.secondary"
+              sx={{ mt: 6, textAlign: "left" }}
+            >
               Kiedy : {props.seance.seanceDate}
             </Typography>
           </CardContent>
-          <Box sx={{ mt: "auto" , mx :"auto", mb : 1}}>
+          <Box sx={{ mt: "auto", mx: "auto", mb: 1 }}>
             <CardActions>
-              <Button  size="large" sx = {{color: "#e87800", fontWeight: 600}}>Zarezerwuj</Button>
+              <Link to={"/reserve"} state={{ seance: JSON.stringify(props.seance) }}>
+                <Button size="large" sx={{ color: "#e87800", fontWeight: 600 }}>
+                  Zarezerwuj
+                </Button>
+              </Link>
             </CardActions>
           </Box>
         </Grid>
         <Grid item xs={5} md={7}>
           <CardMedia
             component="img"
-            height = "550"
+            height="550"
             image={props.seance.titles.imUrl}
             alt="green iguana"
           />
@@ -52,6 +64,5 @@ const CardItem = (props) => {
     </Card>
   );
 };
-
 
 export default CardItem;

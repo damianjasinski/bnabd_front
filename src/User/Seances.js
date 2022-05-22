@@ -20,18 +20,6 @@ const backgroundStyle = {
   },
 };
 
-const carouselButtonStyles = {
-  button: {
-    borderStyle: "solid",
-    borderWidth: "1.5px",
-    borderRadius: "5px",
-    color: "#e87800",
-    fontSize: "18px",
-    fontWeight: "bold",
-    padding: "8px 16px",
-  },
-};
-
 const Seances = () => {
   const [seances, setSeances] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,7 +52,6 @@ const Seances = () => {
   return (
     <Paper
       style={backgroundStyle.paperContainer}
-      sx={{ backgroundSize: "auto"}}
     >
       <Box sx={{ backgroundColor: "black", height: "105vh" }}>
         <Navbar />
