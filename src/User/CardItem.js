@@ -44,7 +44,7 @@ const CardItem = (props) => {
           </CardContent>
           <Box sx={{ mt: "auto", mx: "auto", mb: 1 }}>
             <CardActions>
-              <Link to={"/reserve"} state={{ seance: JSON.stringify(props.seance) }}>
+              <Link to={"/reserve"} state={{ seance: JSON.stringify(props.seance) }} style = {{textDecoration : "none"}}>
                 <Button size="large" sx={{ color: "#e87800", fontWeight: 600 }}>
                   Zarezerwuj
                 </Button>
