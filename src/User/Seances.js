@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { Navigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+
+import CardItem from "./CardItem"
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import {
   CarouselProvider,
@@ -18,10 +15,13 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+const axios = require("axios").default;
+
+
 
 const backgroundStyle = {
   paperContainer: {
-    backgroundColor: `black`,
+    backgroundColor: `white`,
     borderRadius: "0",
     minHeight: "100vh",
   },
@@ -39,47 +39,73 @@ const carouselButtonStyles = {
   },
 };
 
-export default function Seances() {
-  if (!sessionStorage.getItem("user")) {
-    return <Navigate to="/redirect" />;
+
+
+const Seances = () => {
+
+  const [seances, setSeances] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("jwt")
+    const data = axios
+      .get("http://localhost:8080/api/seance/get/current", {
+        headers: {
+          'Authorization': `Basic ${token}`
+        }
+      })
+      .then(function (response) {
+        console.log(response.data)
+        setSeances(response.data.seances)
+        setLoading(false)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
+  if (!sessionStorage.getItem("jwt")) {
+    return <Navigate to="/redirect" />;
+  }
+  
   return (
     <Paper
       style={backgroundStyle.paperContainer}
       sx={{ backgroundSize: "auto" }}
     >
+      
       <div sx={{ backgroundColor: "black" }}>
         <Navbar />
         <Container>
-          <Grid container spacing={2} sx={{ mt: "auto" }}>
-            <Grid item xs={12}>
-              <Box sx={{ minWidth: 50 }}>
-                <CarouselProvider
-                  naturalSlideWidth={100}
-                  naturalSlideHeight={15}
-                  visibleSlides={2}
-                  totalSlides={3}
-                >
-                  <Slider>
-                    <Slide index={0}>I am the first Slide.</Slide>
-                    <Slide index={1}>I am the second Slide.</Slide>
-                    <Slide index={2}>I am the third Slide.</Slide>
-                  </Slider>
-                  <Box sx={{ textAlign: "center" }}>
-                    <ButtonBack style={carouselButtonStyles.button}>
-                      Back
-                    </ButtonBack>
-                    <ButtonNext style={carouselButtonStyles.button}>
-                      Next
-                    </ButtonNext>
-                  </Box>
-                </CarouselProvider>
+          <Box sx={{ mt: 5}}>
+            <CarouselProvider
+              naturalSlideWidth={100}
+              naturalSlideHeight={90}
+              visibleSlides={2}
+              totalSlides={seances.length}
+            >
+              <Slider>
+                <Slide index={0}><CardItem imUrl = {seances[0].titles.imUrl}></CardItem></Slide>
+                <Slide index={1}><CardItem imUrl = {seances[0].titles.imUrl}></CardItem></Slide>
+              </Slider>
+              <Box sx={{ textAlign: "center" }}>
+                <ButtonBack style={carouselButtonStyles.button}>
+                  Back
+                </ButtonBack>
+                <ButtonNext style={carouselButtonStyles.button}>
+                  Next
+                </ButtonNext>
               </Box>
-            </Grid>
-          </Grid>
+            </CarouselProvider>
+          </Box>
         </Container>
       </div>
     </Paper>
   );
 }
+
+export default Seances

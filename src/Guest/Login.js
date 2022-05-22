@@ -59,7 +59,7 @@ export default function Register() {
       .then(function (response) {
         sessionStorage.setItem("jwt", response.data.jwt)
         sessionStorage.setItem("role", response.data.role)
-        sessionStorage.setItem("user", user.email)
+        sessionStorage.setItem("email", user.email)
         setLoggedIn(true)
       })
       .catch(function (error) {
