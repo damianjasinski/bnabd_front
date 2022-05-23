@@ -44,6 +44,14 @@ const ReserveSeance = () => {
   };
 
   const handleNext = () => {
+    if (activeStep === steps.length - 1 && selectedCard == null) {
+      return;
+    }
+
+    if (activeStep === steps.length - 1) {
+      console.log("Finished");
+    }
+
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -58,6 +66,8 @@ const ReserveSeance = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  console.log(selectedCard);
+
   return (
     <Paper style={backgroundStyle.paperContainer}>
       <Navbar />
@@ -68,14 +78,18 @@ const ReserveSeance = () => {
               <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                   const stepProps = {};
-                  const labelProps = {
-                  };
+                  const labelProps = {};
                   if (isStepSkipped(index)) {
                     stepProps.completed = false;
                   }
                   return (
                     <Step key={label} {...stepProps} sx={{ mx: 3, mt: 1 }}>
-                      <StepLabel StepIconProps={{style: {color : '#e87800'}}} {...labelProps}>{label}</StepLabel>
+                      <StepLabel
+                        StepIconProps={{ style: { color: "#e87800" } }}
+                        {...labelProps}
+                      >
+                        {label}
+                      </StepLabel>
                     </Step>
                   );
                 })}
@@ -83,7 +97,7 @@ const ReserveSeance = () => {
 
               {activeStep === steps.length ? (
                 <Box>
-                  <Typography sx={{ mt: 2, mb: 1, textAlign: "center" }}>
+                  <Typography variant = "h4" sx={{ mt: 2, mb: 1, textAlign: "center" }}>
                     All steps completed - you&apos;re finished
                   </Typography>
                   <Box

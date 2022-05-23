@@ -34,8 +34,8 @@ const StepComponents = (props) => {
   };
 
   const selectCard = (event) => {
-        console.log(event.target.id)
-  }
+      props.cardSetter(event.target.id)
+  };
 
   if (props.step == 0) {
     return <Order></Order>;
@@ -48,7 +48,10 @@ const StepComponents = (props) => {
           alignItems: "center",
         }}
       >
-        <FormControl color="warning" sx={{ mt: 5, minWidth: 300, mx: "auto", color : "#e87800"}}>
+        <FormControl
+          color="warning"
+          sx={{ mt: 5, minWidth: 300, mx: "auto", color: "#e87800" }}
+        >
           <InputLabel id="demo-simple-select-helper-label">
             Payment Card
           </InputLabel>
@@ -61,7 +64,11 @@ const StepComponents = (props) => {
           >
             {paymentCards.map((card) => {
               return (
-                <MenuItem id = {card.cardNumber} value = {card.cardNumber} onClick={selectCard}>
+                <MenuItem
+                  id={card.cardNumber}
+                  value={card.cardNumber}
+                  onClick={selectCard}
+                >
                   {card.cardNumber}/{card.expDate}
                 </MenuItem>
               );
