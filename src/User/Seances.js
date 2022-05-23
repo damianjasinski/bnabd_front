@@ -14,7 +14,7 @@ const axios = require("axios").default;
 
 const backgroundStyle = {
   paperContainer: {
-    backgroundColor: `white`,
+    backgroundColor: `black`,
     borderRadius: "0",
     minHeight: "100vh",
   },
@@ -50,40 +50,50 @@ const Seances = () => {
   }
 
   return (
-    <Paper
-      style={backgroundStyle.paperContainer}
-    >
-      <Box sx={{ backgroundColor: "black", height: "105vh" }}>
-        <Navbar />
-        <Container>
-          <Box sx={{ backgroundColor: "#303131", textAlign: "center", height : "4vh"}}>
-            <Typography variant="h5" gutterBottom component="div" sx ={{color: "#e87800"}}>
-              Aktualne seanse
-            </Typography>
-          </Box>
-        </Container>
-        <Container>
-          <Box sx={{ mt: 6 }}>
-            <Carousel
-              dynamicHeight={true}
-              centerMode={true}
-              swipeable={true}
-              emulateTouch={true}
-              centerSlidePercentage={80}
-            >
-              {seances.map((seance) => {
-                return (
-                  <CardItem
-                    seance = {seance}
-                  ></CardItem>
-                );
-              })}
-            </Carousel>
-          </Box>
-        </Container>
-      </Box>
+    <Paper style={backgroundStyle.paperContainer}>
+      <Navbar />
+      <Container>
+        
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent :"center",
+            flexDirection:"column",
+            minHeight: "80vh",
+          }}
+        >
+            <Typography variant="h3" sx={{ textAlign: "center", mb : 5 }}>
+          {" "}
+          Aktualne seanse
+        </Typography>
+          <Carousel
+            dynamicHeight={true}
+            centerMode={true}
+            swipeable={true}
+            emulateTouch={true}
+            centerSlidePercentage={85}
+          >
+            {seances.map((seance) => {
+              return <CardItem seance={seance}></CardItem>;
+            })}
+          </Carousel>
+        </Box>
+      </Container>
     </Paper>
   );
 };
 
 export default Seances;
+
+// <Carousel
+//   dynamicHeight={true}
+//   centerMode={true}
+//   swipeable={true}
+//   emulateTouch={true}
+//   centerSlidePercentage={80}
+// >
+//   {seances.map((seance) => {
+//     return <CardItem seance={seance}></CardItem>;
+//   })}
+// </Carousel>
