@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Stepper from "@mui/material/Stepper";
 import Container from "@mui/material/Container";
 import Step from "@mui/material/Step";
@@ -12,10 +11,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { Navigate } from "react-router-dom"
+
+
 import Paper from "@mui/material/Paper";
 
 const backgroundStyle = {
@@ -67,6 +65,10 @@ const ReserveSeance = () => {
   };
 
   console.log(selectedCard);
+
+  if (sessionStorage.getItem("jwt") == null) {
+    return <Navigate to = "/register" />
+  }
 
   return (
     <Paper style={backgroundStyle.paperContainer}>
