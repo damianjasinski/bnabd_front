@@ -118,7 +118,7 @@ const ReserveSeance = () => {
                 </Stepper>
 
               {activeStep === steps.length ? (
-                <Box>
+                <Box sx = {{mt : "auto", mb : "auto"}}>
                   <Typography
                     variant="h4"
                     sx={{ mt: 2, mb: 1, textAlign: "center" }}
