@@ -9,6 +9,7 @@ import Welcome from "./Welcome/Welcome";
 import RedirectCheck from "./Util/RedirectCheck";
 import Logged from "./User/Seances";
 import ReserveSeance from "./User/ReserveSeance";
+import Seances from "./Guest/Seances";
 
 const Reroute = () => {
     return(
@@ -24,6 +25,7 @@ const Reroute = () => {
             <Route path="/payment" element = {<Payment />} />
             <Route path="/reserve" element = {<ReserveSeance />} />
             <Route path="/logged_view" element = {<Logged />} />
+            <Route path="/guest_view" element = {<Seances />} />
         </Routes>
     </Router>
 
