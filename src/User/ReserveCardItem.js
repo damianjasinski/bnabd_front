@@ -17,6 +17,14 @@ const CardItem = (props) => {
           <CardContent>
             <Typography
               gutterBottom
+              variant="h3"
+              component="div"
+              sx={{ textAlign: "center" }}
+            >
+              Rezerwujesz bilet na seans:
+            </Typography>
+            <Typography
+              gutterBottom
               variant="h5"
               component="div"
               sx={{ textAlign: "center" }}

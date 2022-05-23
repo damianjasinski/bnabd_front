@@ -72,32 +72,57 @@ const ReserveSeance = () => {
     <Paper style={backgroundStyle.paperContainer}>
       <Navbar />
       <Container>
-        <Box>
-          <Grid sx={{ mt: 2 }}>
-            <Grid item xs={12} md={12} sx={{ backgroundColor: "#303131" }}>
-              <Stepper activeStep={activeStep}>
-                {steps.map((label, index) => {
-                  const stepProps = {};
-                  const labelProps = {};
-                  if (isStepSkipped(index)) {
-                    stepProps.completed = false;
-                  }
-                  return (
-                    <Step key={label} {...stepProps} sx={{ mx: 3, mt: 1 }}>
-                      <StepLabel
-                        StepIconProps={{ style: { color: "#e87800" } }}
-                        {...labelProps}
-                      >
-                        {label}
-                      </StepLabel>
-                    </Step>
-                  );
-                })}
-              </Stepper>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            minHeight: "90vh",
+          }}
+        >
+          <Grid container sx={{ mt: 2 }}>
+            <Grid
+              item
+              xs={12}
+              md={12}
+              sx={{
+                backgroundColor: "#303131",
+                minHeight: "40vh",
+                display: "flex",
+
+                flexDirection: "column",
+                
+              }}
+            >
+            
+                <Stepper sx = {{mt : "auto"}} activeStep={activeStep}>
+                  {steps.map((label, index) => {
+                    const stepProps = {};
+                    const labelProps = {};
+                    if (isStepSkipped(index)) {
+                      stepProps.completed = false;
+                    }
+                    return (
+                        
+                      <Step key={label} {...stepProps} sx={{ mx: 3 }}>
+                        <StepLabel
+                          StepIconProps={{
+                            style: { color: "#e87800", fontSize: "25px" },
+                          }}
+                          {...labelProps}
+                        >
+                          <Typography>{label}</Typography>
+                        </StepLabel>
+                      </Step>
+                    );
+                  })}
+                </Stepper>
 
               {activeStep === steps.length ? (
                 <Box>
-                  <Typography variant = "h4" sx={{ mt: 2, mb: 1, textAlign: "center" }}>
+                  <Typography
+                    variant="h4"
+                    sx={{ mt: 2, mb: 1, textAlign: "center" }}
+                  >
                     All steps completed - you&apos;re finished
                   </Typography>
                   <Box
@@ -112,25 +137,28 @@ const ReserveSeance = () => {
                   </Box>
                 </Box>
               ) : (
-                <Container>
+                <Container sx = {{mt: "auto", mb : "auto"}}>
                   <StepComponents
                     step={activeStep}
                     seatSetter={setSelectedSeat}
                     cardSetter={setSelectedCard}
                   ></StepComponents>
-                  <Box
-                    sx={{ display: "flex", flexDirection: "row", pt: 2, mt: 5 }}
-                  >
+                  <Box sx={{mt : 5, display: "flex", flexDirection: "row", pt: 2 }}>
                     <Button
                       color="inherit"
                       disabled={activeStep === 0}
                       onClick={handleBack}
+                      size="large"
                       sx={{ mr: 1, color: "#e87800" }}
                     >
                       Back
                     </Button>
                     <Box sx={{ flex: "1 1 auto" }} />
-                    <Button onClick={handleNext} sx={{ color: "#e87800" }}>
+                    <Button
+                      size="large"
+                      onClick={handleNext}
+                      sx={{ color: "#e87800" }}
+                    >
                       {activeStep === steps.length - 1 ? "Finish" : "Next"}
                     </Button>
                   </Box>
