@@ -103,13 +103,14 @@ export default function Register() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
+    
       <Paper 
         style={backgroundStyle.paperContainer}
         sx={{ backgroundSize: "auto"  }}
       >
         <Box sx={{ mt: 2  }}>
           <Grid container spacing={2}>
-            <Grid item lg={7} sx={{}}>
+            <Grid item md={7} sx={{}}>
               <Box
                 sx={{
                   color: "text.secondary",
@@ -118,19 +119,20 @@ export default function Register() {
             </Grid>
 
             <Grid
-              spacing={0}
+              item container
               style={{ minHeight: "100vh" }}
-              item
-              lg={5}
-
-            
-              sx={{ bgcolor: "white" }}
-              container
+              md={5}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent :"center",
+                bgcolor : "white"
+              }}
             >
               <Box
                 sx={{
-                  mx: "auto",
-                  mt: "auto",
+                  mx: "auto"
                 }}
                 >
                 <Typography variant="h2" component="h2" color = "black">
@@ -141,11 +143,11 @@ export default function Register() {
               <Box
                 sx={{
                   color: "text.secondary",
-                  mx: "auto",
+
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box sm = {12} sx={{ mx: 5, p: 10 }}>
+                  <Box  sx={{ mx: 5, p: 6 }}>
                     <Box >
                       <TextField
                         

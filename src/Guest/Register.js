@@ -139,7 +139,7 @@ export default function Register() {
       >
         <Box sx={{ mt: 2 }}>
           <Grid container spacing={2}>
-            <Grid item lg={7} sx={{}}>
+            <Grid item md={7} sx={{}}>
               <Box
                 sx={{
                   color: "text.secondary",
@@ -151,14 +151,19 @@ export default function Register() {
               spacing={0}
               style={{ minHeight: "100vh" }}
               item
-              lg={5}
-              sx={{ bgcolor: "white" }}
+              md={5}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent :"center",
+                bgcolor : "white"
+              }}
               container
             >
               <Box
                 sx={{
                   mx: "auto",
-                  mt: "auto",
 
                 }}
               >
