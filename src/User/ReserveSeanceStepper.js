@@ -27,11 +27,11 @@ const backgroundStyle = {
 const ReserveSeance = () => {
   const { state } = useLocation();
   const seance = JSON.parse(state.seance);
-  const steps = ["Miejsce", "Płatność"];
+  const [selectedSeat, setSelectedSeat] = React.useState(" ");
+  const [selectedCard, setSelectedCard] = React.useState(null);
+  const steps = ["Miejsce " + selectedSeat, "Płatność"];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const [selectedSeat, setSelectedSeat] = React.useState(null);
-  const [selectedCard, setSelectedCard] = React.useState(null);
 
   const isStepOptional = (step) => {
     return step === 2;
@@ -42,10 +42,13 @@ const ReserveSeance = () => {
   };
 
   const handleNext = () => {
-    if (activeStep === steps.length - 1 && selectedCard == null) {
+    if (activeStep === steps.length - 1 && selectedCard == null ) {
       return;
     }
-
+    if (activeStep === steps.length - 2 && (selectedSeat == null || !selectedSeat || selectedSeat === " ")) {
+      return;
+    }
+    
     if (activeStep === steps.length - 1) {
       console.log("Finished");
     }
@@ -63,7 +66,7 @@ const ReserveSeance = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
+  console.log(selectedSeat);
   console.log(selectedCard);
 
   if (sessionStorage.getItem("jwt") == null) {
@@ -90,13 +93,13 @@ const ReserveSeance = () => {
                 backgroundColor: "#303131",
                 minHeight: "40vh",
                 display: "flex",
-
+                
                 flexDirection: "column",
                 
               }}
             >
             
-                <Stepper sx = {{mt : "auto"}} activeStep={activeStep}>
+                <Stepper sx = {{mt : 3}} activeStep={activeStep}>
                   {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
@@ -105,7 +108,7 @@ const ReserveSeance = () => {
                     }
                     return (
                         
-                      <Step key={label} {...stepProps} sx={{ mx: 3 }}>
+                      <Step key={label} {...stepProps} sx={{ mx: 3}}>
                         <StepLabel
                           StepIconProps={{
                             style: { color: "#e87800", fontSize: "25px" },
@@ -142,10 +145,11 @@ const ReserveSeance = () => {
                 <Container sx = {{mt: "auto", mb : "auto"}}>
                   <StepComponents
                     step={activeStep}
+                    seanceId = {seance.id}
                     seatSetter={setSelectedSeat}
                     cardSetter={setSelectedCard}
                   ></StepComponents>
-                  <Box sx={{mt : 5, display: "flex", flexDirection: "row", pt: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                     <Button
                       color="inherit"
                       disabled={activeStep === 0}
@@ -167,8 +171,8 @@ const ReserveSeance = () => {
                 </Container>
               )}
             </Grid>
-            <Grid item xs={12} md={12} sx={{ backgroundColor: "#303131" }}>
-              <ReserveCardItem seance={seance}></ReserveCardItem>
+            <Grid item xs={12} md={12} sx={{ backgroundColor: "#303131"}}>
+              <ReserveCardItem seance={seance} sx = {{}}></ReserveCardItem>
             </Grid>
           </Grid>
         </Box>

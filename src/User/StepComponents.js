@@ -38,7 +38,7 @@ const StepComponents = (props) => {
   };
 
   if (props.step == 0) {
-    return <Order></Order>;
+    return <Order seatSetter = {props.seatSetter} seanceId = {props.seanceId}></Order>;
   } else {
     return (
       <Box

@@ -8,7 +8,7 @@ import Payment from "./Payment/Payment";
 import Welcome from "./Welcome/Welcome";
 import RedirectCheck from "./Util/RedirectCheck";
 import Logged from "./User/Seances";
-import ReserveSeance from "./User/ReserveSeance";
+import ReserveSeance from "./User/ReserveSeanceStepper";
 import Seances from "./Guest/Seances";
 
 const Reroute = () => {

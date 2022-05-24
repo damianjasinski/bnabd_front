@@ -19,7 +19,7 @@ const CardItem = (props) => {
               gutterBottom
               variant="h3"
               component="div"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", mt :2 }}
             >
               Rezerwujesz bilet na seans:
             </Typography>
@@ -40,7 +40,7 @@ const CardItem = (props) => {
             </Typography>
           </CardContent>
         </Grid>
-        <Grid align="center" justify="center" xs={12} md={5} sx={{ my: 1 }}>
+        <Grid align="center" justify="center" xs={12} md={5} sx={{}}>
           <img src={props.seance.titles.imUrl} height={450} />
         </Grid>
       </Grid>
