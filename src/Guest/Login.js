@@ -44,7 +44,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export default function Register() {
+export default function Login() {
 
   const [response, setResponse] = useState([]);
   const [emailError, setEmailError] = useState(false);
@@ -60,6 +60,7 @@ export default function Register() {
         sessionStorage.setItem("jwt", response.data.jwt)
         sessionStorage.setItem("role", response.data.role)
         sessionStorage.setItem("email", user.email)
+        sessionStorage.setItem("id", response.data.id)
         setLoggedIn(true)
       })
       .catch(function (error) {

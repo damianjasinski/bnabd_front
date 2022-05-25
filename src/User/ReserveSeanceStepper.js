@@ -12,9 +12,11 @@ import Typography from "@mui/material/Typography";
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom"
-
-
 import Paper from "@mui/material/Paper";
+const axios = require("axios").default;
+
+
+
 
 const backgroundStyle = {
   paperContainer: {
@@ -32,6 +34,7 @@ const ReserveSeance = () => {
   const steps = ["Miejsce " + selectedSeat, "Płatność"];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const token = sessionStorage.getItem("jwt")
 
   const isStepOptional = (step) => {
     return step === 2;
@@ -40,6 +43,32 @@ const ReserveSeance = () => {
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
+
+  const addOrder = () => {
+
+      const order = {
+        users: sessionStorage.getItem("id"),
+        seance: seance.id,
+        payment: {
+          ammount: 16,
+          finalized: true,
+          paymentCard: {
+            cardNumber: selectedCard
+          }
+        },
+        seat: selectedSeat,
+      };
+
+      const data = axios
+      .post("http://localhost:8080/api/order/add", order, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        console.log(response.data);
+      });
+  }
 
   const handleNext = () => {
     if (activeStep === steps.length - 1 && selectedCard == null ) {
@@ -50,6 +79,7 @@ const ReserveSeance = () => {
     }
     
     if (activeStep === steps.length - 1) {
+      addOrder();
       console.log("Finished");
     }
 
