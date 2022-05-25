@@ -22,7 +22,7 @@ const CardItem = (props) => {
             display: "flex",
             flexDirection: "column",
 
-            backgroundColor: "#F5F5DC",
+
           }}
         >
           <Box sx = {{mt :"auto"}}>
@@ -31,14 +31,14 @@ const CardItem = (props) => {
                 gutterBottom
                 variant="h5"
                 component="div"
-                sx={{ textAlign: "center", justifyContent: "center", color: "black", fontWeight : "bold" }}
+                sx={{ textAlign: "center", justifyContent: "center",  fontWeight : "bold" }}
               >
                 {props.seance.titles.name}
               </Typography>
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ textAlign: "center", justifyContent: "center", color: "black", fontWeight : "bold" }}
+                sx={{ textAlign: "center", justifyContent: "center",  fontWeight : "bold" }}
               >
                 Lizards are a widespread group of squamate reptiles, with over
                 6,000 species, ranging across all continents except Antarctica
@@ -46,7 +46,7 @@ const CardItem = (props) => {
               <Typography
                 variant="h5"
                 color="text.secondary"
-                sx={{ mt: 6, textAlign: "left", textAlign: "center", color: "black", fontWeight : "bold" }}
+                sx={{ mt: 6, textAlign: "left", textAlign: "center",  fontWeight : "bold" }}
               >
                 Kiedy : {props.seance.seanceDate}
               </Typography>
