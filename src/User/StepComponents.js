@@ -6,10 +6,13 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Order from "../Order/Order";
 import Box from "@mui/material/Box";
+import {useNavigate} from 'react-router-dom';
+
 
 const axios = require("axios").default;
 
 const StepComponents = (props) => {
+  const navigate = useNavigate();
   const [age, setAge] = React.useState("");
   const [paymentCards, setPaymentCards] = React.useState({});
 
@@ -36,6 +39,10 @@ const StepComponents = (props) => {
   const selectCard = (event) => {
       props.cardSetter(event.target.id)
   };
+
+  const addNewCard = () => {
+      navigate("/add/paymentcard")
+  }
 
   if (props.step == 0) {
     return <Order seatSetter = {props.seatSetter} seanceId = {props.seanceId}></Order>;
@@ -73,7 +80,7 @@ const StepComponents = (props) => {
                 </MenuItem>
               );
             })}
-            <MenuItem>+ Add new card</MenuItem>;
+            <MenuItem onClick = {addNewCard}>+ Add new card</MenuItem>;
           </Select>
           <FormHelperText>Select payment card</FormHelperText>
         </FormControl>

@@ -57,6 +57,7 @@ const Order = (props) => {
                   selectedSetter={setSelectedId}
                   seatSetter={props.seatSetter}
                   seatId={seat.id}
+                  disabled = {false}
                   seatColor="#FFD580"
                 ></SeatIcon>
               </Grid>
@@ -77,6 +78,7 @@ const Order = (props) => {
                   seatSetter={props.seatSetter}
                   selectedSetter={setSelectedId}
                   seatId={seat.id}
+                  disabled = {false}
                   seatColor="#90ee90"
                 ></SeatIcon>
               </Grid>
@@ -97,6 +99,7 @@ const Order = (props) => {
                   selectedSetter={setSelectedId}
                   seatSetter={props.seatSetter}
                   seatId={seat.id}
+                  disabled = {true}
                   seatColor="#ee9090"
                 ></SeatIcon>
               </Grid>

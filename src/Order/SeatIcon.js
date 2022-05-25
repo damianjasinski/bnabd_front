@@ -6,6 +6,9 @@ import React from "react";
 import { IconButton } from "@mui/material";
 const SeatIcon = (props) => {
   const handleSelect = (event) => {
+    if (props.disabled) {
+      return
+    }
     props.selectedSetter(event.target.id)
     props.seatSetter(event.target.id)
   };
@@ -19,7 +22,7 @@ const SeatIcon = (props) => {
         alignItems: "center",
       }}
     >
-      <IconButton id={props.seatId} onClick={handleSelect}>
+      <IconButton id={props.seatId} onClick={handleSelect} disabled = {props.disabled} >
         <WeekendIcon onClick={handleSelect} id={props.seatId} sx = {{color : props.seatColor}} fontSize="large"></WeekendIcon>
       </IconButton>
       <Typography
