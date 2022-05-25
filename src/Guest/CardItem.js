@@ -12,18 +12,18 @@ import Container from "@mui/material/Container";
 
 const CardItem = (props) => {
   return (
-    <Container>
-      <Card sx={{}}>
-        <Grid spacing={2}>
-          <Grid
-            item
-            xs={7}
-            md={6}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
+    <Card sx={{}}>
+      <Grid container>
+        <Grid
+          item
+          xs={7}
+          md={6}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box sx={{ mt: "auto" }}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {props.seance.titles.name}
@@ -31,7 +31,11 @@ const CardItem = (props) => {
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ textAlign: "center", mt: 2 }}
+                sx={{
+                  textAlign: "center",
+                  justifyContent: "center",
+                  fontWeight: "bold",
+                }}
               >
                 Lizards are a widespread group of squamate reptiles, with over
                 6,000 species, ranging across all continents except Antarctica
@@ -39,39 +43,41 @@ const CardItem = (props) => {
               <Typography
                 variant="h5"
                 color="text.secondary"
-                sx={{ mt: 6, textAlign: "left", textAlign: "center" }}
+                sx={{
+                  mt: 6,
+                  textAlign: "left",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                }}
               >
                 Kiedy : {props.seance.seanceDate}
               </Typography>
             </CardContent>
-            <Box sx={{ mt: "auto", mx: "auto" }}>
-              <CardActions>
-                <Link
-                  to={"/reserve"}
-                  state={{ seance: JSON.stringify(props.seance) }}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    size="large"
-                    sx={{ color: "#e87800", fontWeight: 600 }}
-                  >
-                    Zarezerwuj
-                  </Button>
-                </Link>
-              </CardActions>
-            </Box>
-          </Grid>
-          <Grid item xs={5} md={6}>
-            <CardMedia
-              component="img"
-              height="650"
-              image={props.seance.titles.imUrl}
-              alt="green iguana"
-            />
-          </Grid>
+          </Box>
+          <Box sx={{ mt: "auto", mx: "auto" }}>
+            <CardActions>
+              <Link
+                to={"/reserve"}
+                state={{ seance: JSON.stringify(props.seance) }}
+                style={{ textDecoration: "none" }}
+              >
+                <Button size="large" sx={{ color: "#e87800", fontWeight: 600 }}>
+                  Zarezerwuj
+                </Button>
+              </Link>
+            </CardActions>
+          </Box>
         </Grid>
-      </Card>
-    </Container>
+        <Grid item xs={5} md={6}>
+          <CardMedia
+            component="img"
+            height="650"
+            image={props.seance.titles.imUrl}
+            alt="green iguana"
+          />
+        </Grid>
+      </Grid>
+    </Card>
   );
 };
 

@@ -108,7 +108,7 @@ const ReserveSeance = () => {
   console.log(selectedCard);
 
   if (sessionStorage.getItem("jwt") == null) {
-    return <Navigate to="/register" />;
+    return <Navigate to="/login" />;
   }
 
   return (

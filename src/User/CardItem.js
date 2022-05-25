@@ -21,8 +21,6 @@ const CardItem = (props) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-
-
           }}
         >
           <Box sx = {{mt :"auto"}}>

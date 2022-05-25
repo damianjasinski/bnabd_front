@@ -7,20 +7,18 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+import {useNavigate} from 'react-router-dom';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from "@mui/material/MenuItem";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 
 const pages = ["Seanse", "O nas"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate()
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,6 +41,11 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  
+  const handleLogout = () => {
+    sessionStorage.clear()
+    navigate('/redirect')
+  }
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "#1C1D1D" }}>
@@ -183,8 +186,9 @@ const ResponsiveAppBar = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Profil</MenuItem>
+                <MenuItem onClick={handleClose}>Moje konto</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
         </Toolbar>

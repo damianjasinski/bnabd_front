@@ -52,35 +52,33 @@ const Seances = () => {
   return (
     <Paper style={backgroundStyle.paperContainer}>
       <Navbar />
-      <Container>
-        
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent :"center",
-            flexDirection:"column",
-            minHeight: "80vh",
-          }}
-        >
-            <Typography variant="h3" sx={{ textAlign: "center", mb : 5 }}>
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          minHeight: "80vh",
+        }}
+      >
+        <Typography variant="h3" sx={{ textAlign: "center", mb: 5 }}>
           {" "}
           Aktualne seanse
         </Typography>
-          <Carousel
-            dynamicHeight={true}
-            centerMode={true}
-            swipeable={true}
-            emulateTouch={true}
-            centerSlidePercentage={85}
-            showThumbs = {false}
-          >
-            {seances.map((seance) => {
-              return <CardItem seance={seance}></CardItem>;
-            })}
-          </Carousel>
-        </Box>
-      </Container>
+        <Carousel
+          dynamicHeight={true}
+          centerMode={true}
+          swipeable={true}
+          emulateTouch={true}
+          centerSlidePercentage={85}
+          showThumbs={false}
+        >
+          {seances.map((seance) => {
+            return <CardItem seance={seance}></CardItem>;
+          })}
+        </Carousel>
+      </Box>
     </Paper>
   );
 };
