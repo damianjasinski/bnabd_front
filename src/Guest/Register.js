@@ -10,6 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
+import Footer from "./Footer";
 const axios = require("axios").default;
 
 const theme = createTheme({
@@ -267,6 +268,7 @@ export default function Register() {
           </Grid>
         </Box>
       </Paper>
+      <Footer></Footer>
     </ThemeProvider>
   );
 }

@@ -7,6 +7,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Typography from "@mui/material/Typography";
 import { Container, Paper, Stack, TextField } from "@mui/material";
+import Footer from "../Guest/Footer";
+
 const axios = require("axios").default;
 
 const backgroundStyle = {
@@ -181,6 +183,7 @@ const PaymentCards = () => {
           </Container>
         </Box>
       </Box>
+      <Footer></Footer>
     </Paper>
   );
 };
