@@ -11,6 +11,7 @@ import ReserveSeance from "./User/ReserveSeanceStepper";
 import Seances from "./Guest/Seances";
 import PaymentCards from "./User/PaymentCards";
 import Profile from "./User/Profile";
+import AboutUs from "./Guest/AboutUs"
 
 const Reroute = () => {
     return(
@@ -28,6 +29,7 @@ const Reroute = () => {
             <Route path="/guest_view" element = {<Seances />} />
             <Route path="/add/paymentcard" element = {<PaymentCards />} />
             <Route path ="/profile" element = {<Profile />} />
+            <Route path ="/aboutus" element = {<AboutUs />} />
         </Routes>
     </Router>
 

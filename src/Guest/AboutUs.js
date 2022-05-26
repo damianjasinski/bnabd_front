@@ -71,7 +71,7 @@ const AboutUs = () => {
               alignItems: 'center',
             }}
           >
-<Container maxWidth="sm">
+<Container maxWidth="sm" sx = {{mt:5}}>
             <Typography
               component="h1"
               variant="h2"
