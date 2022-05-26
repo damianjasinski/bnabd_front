@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Navbar from "./Navbar";
@@ -36,7 +35,7 @@ const PaymentCards = () => {
   };
 
   const sendRequest = () => {
-    if (validateFields() === true) {
+    if (validateInputs() === true) {
       console.log("something is bad");
     }
     const paymentCard = {
@@ -66,7 +65,7 @@ const PaymentCards = () => {
     window.location.reload(false);
   };
 
-  const validateFields = () => {
+  const validateInputs = () => {
     if (inputs.cardNumber.length != 16) {
       setCardNumberError(true);
       return false;
@@ -174,7 +173,7 @@ const PaymentCards = () => {
                   onClick={sendRequest}
                   endIcon={<SendIcon />}
                 >
-                  Send
+                  Dodaj
                 </Button>
               </Stack>
             </Box>
