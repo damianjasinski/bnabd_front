@@ -79,8 +79,8 @@ const Seances = () => {
             return <CardItem seance={seance}></CardItem>;
           })}
         </Carousel>
-      </Box>
       <Footer></Footer>
+      </Box>
     </Paper>
     
   );

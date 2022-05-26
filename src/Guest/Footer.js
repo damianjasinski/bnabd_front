@@ -1,12 +1,12 @@
-import React from 'react'
-import { BottomNavigation } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
+import { BottomNavigation } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 import Navbar from "./Navbar";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 
 const theme = createTheme({
   palette: {
@@ -16,45 +16,42 @@ const theme = createTheme({
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="#e87800"
-    sx={
-      {
-        fontWeight: 'bold'
-      }
-    }>
-      {'Copyright © '}
-      Dostarczamy filmy, które zapewnią Ci relaks i odprężenie. DCinema
-      {' '}
+    <Typography
+      variant="body2"
+      color="#7d664c"
+      sx={{
+        mx: "auto",
+        fontWeight: "bold",
+      }}
+    >
+      {"Copyright © "}
+      Dostarczamy filmy, które zapewnią Ci relaks i odprężenie. DCinema{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 const Footer = () => {
   return (
+
       <Box
         component="footer"
         sx={{
+          display: "flex",
+          position: "fixed",
+          width:"100%",
+          bottom: 0,
           px: 2,
-          py: 2,
-          mt: 'auto',
+
           backgroundColor: "#1C1D1D",
           color: "#e87800",
         }}
       >
-        <Box>
-        <Container maxWidth="sm">
-          <Copyright />
-        </Container>
-
-        </Box>
-
-        
+        <Copyright />
       </Box>
-      
 
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
