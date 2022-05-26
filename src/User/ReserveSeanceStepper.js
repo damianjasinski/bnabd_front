@@ -13,6 +13,7 @@ import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
+import Footer from "../Guest/Footer";
 const axios = require("axios").default;
 
 const backgroundStyle = {
@@ -32,6 +33,7 @@ const ReserveSeance = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const token = sessionStorage.getItem("jwt");
+
 
   const isStepOptional = (step) => {
     return step === 2;
@@ -212,6 +214,7 @@ const ReserveSeance = () => {
           </Grid>
         </Box>
       </Container>
+      <Footer></Footer>
     </Paper>
   );
 };

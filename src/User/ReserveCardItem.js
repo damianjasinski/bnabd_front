@@ -45,7 +45,7 @@ const CardItem = (props) => {
           <img src={props.seance.titles.imUrl} height={450} />
         </Grid>
       </Grid>
-      <Footer></Footer>
+      
     </Card>
   );
 };
