@@ -12,6 +12,7 @@ import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom"
 import FormHelperText from '@mui/material/FormHelperText';
+import Footer from "./Footer";
 
 const axios = require("axios").default;
 
@@ -194,7 +195,7 @@ export default function Login() {
           </Grid>
         </Box>
       </Paper>
-    
+      <Footer></Footer>
     </ThemeProvider>
   );
 }

@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Footer from "./Footer";
 
 const axios = require("axios").default;
 
@@ -79,7 +80,9 @@ const Seances = () => {
           })}
         </Carousel>
       </Box>
+      <Footer></Footer>
     </Paper>
+    
   );
 };
 

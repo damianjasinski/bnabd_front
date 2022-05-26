@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import Footer from "../Guest/Footer";
 
 const CardItem = (props) => {
   return (
@@ -44,6 +45,7 @@ const CardItem = (props) => {
           <img src={props.seance.titles.imUrl} height={450} />
         </Grid>
       </Grid>
+      
     </Card>
   );
 };
