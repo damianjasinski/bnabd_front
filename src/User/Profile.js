@@ -215,7 +215,7 @@ const Profile = () => {
                 sx={{ color: "#e87800", fontWeight: "bold" }}
                 startIcon={<DeleteIcon />}
               >
-                Delete
+                Anuluj
               </Button>
               <Button
                 variant="contained"

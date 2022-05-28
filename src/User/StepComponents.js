@@ -73,7 +73,7 @@ const StepComponents = (props) => {
                 </MenuItem>
               );
             })}
-            <MenuItem onClick = {addNewCard}>+ Add new card</MenuItem>;
+            <MenuItem onClick = {addNewCard}>+ Dodaj nową kartę</MenuItem>;
           </Select>
           <FormHelperText>Select payment card</FormHelperText>
         </FormControl>

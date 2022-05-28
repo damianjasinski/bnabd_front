@@ -127,6 +127,14 @@ const PaymentCardDisplay = () => {
             borderRadius: "5px",
           }}
         >
+            <Typography
+          variant="body2"
+          color = "text.secondary"
+          sx={{ textAlign: "center", mb: 6 }}
+        >
+          {" "}
+        Aby usunąć kartę wybierz ją z poniższego pola i kliknij przycisk usuń
+        </Typography>
           <Box>
             <Box
               component="form"
@@ -158,7 +166,7 @@ const PaymentCardDisplay = () => {
                     </MenuItem>
                   );
                 })}
-                <MenuItem onClick={addNewCard}>+ Add new card</MenuItem>;
+                <MenuItem onClick={addNewCard}>+ Dodaj nową kartę</MenuItem>;
               </Select>
               <FormHelperText>Select payment card</FormHelperText>
             </FormControl>
@@ -172,7 +180,7 @@ const PaymentCardDisplay = () => {
               sx={{ color: "#e87800", fontWeight: "bold" }}
               startIcon={<DeleteIcon />}
             >
-              Delete
+              Usuń
             </Button>
           </Stack>
         </Box>

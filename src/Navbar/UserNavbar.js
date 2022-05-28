@@ -54,7 +54,7 @@ const ResponsiveAppBar = () => {
   };
 
   const handleMyPaymentCards = () => {
-    navigate("/profile");
+    navigate("/get/paymentcards");
     setAnchorEl(null);
   };
 
