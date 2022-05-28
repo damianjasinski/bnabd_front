@@ -60,7 +60,7 @@ const Seances = () => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          minHeight: "80vh",
+          minHeight: "90vh",
         }}
       >
         <Typography variant="h3" sx={{ textAlign: "center", mb: 5 }}>
@@ -73,7 +73,7 @@ const Seances = () => {
           swipeable={true}
           emulateTouch={true}
           centerSlidePercentage={85}
-          showThumbs={false}
+  
         >
           {seances.map((seance) => {
             return <CardItem seance={seance}></CardItem>;

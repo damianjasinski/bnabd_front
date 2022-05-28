@@ -7,6 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { Container, Paper, Stack, TextField } from "@mui/material";
+import Footer from "../Guest/Footer";
 const axios = require("axios").default;
 
 const backgroundStyle = {
@@ -134,7 +135,7 @@ const Profile = () => {
         <Box
           sx={{
             backgroundColor: "#303131",
-            minHeight: "60vh",
+            minHeight: "50vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -234,6 +235,7 @@ const Profile = () => {
           </Box>
         </Box>
       </Box>
+      <Footer></Footer>
     </Paper>
   );
 };

@@ -60,12 +60,12 @@ const Seances = () => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          minHeight: "80vh",
+          minHeight: "90vh",
         }}
       >
         <Typography
           variant="h3"
-          sx={{ textAlign: "center", mb: 5, color: "#F5F5DC" }}
+          sx={{ textAlign: "center", mb: 5}}
         >
           {" "}
           Aktualne seanse
