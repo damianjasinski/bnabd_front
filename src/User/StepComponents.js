@@ -13,7 +13,6 @@ const axios = require("axios").default;
 
 const StepComponents = (props) => {
   const navigate = useNavigate();
-  const [age, setAge] = React.useState("");
   const [paymentCards, setPaymentCards] = React.useState({});
 
   React.useEffect(() => {
@@ -32,9 +31,6 @@ const StepComponents = (props) => {
       });
   }, []);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const selectCard = (event) => {
       props.cardSetter(event.target.id)
@@ -65,9 +61,6 @@ const StepComponents = (props) => {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={age}
-            label="Payment Cards"
-            onChange={handleChange}
           >
             {paymentCards.map((card) => {
               return (

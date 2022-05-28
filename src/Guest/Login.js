@@ -17,7 +17,7 @@ const axios = require("axios").default;
 
 const theme = createTheme({
   palette: {
-    type: "darkTheme",
+    type: "dark",
   },
 });
 
