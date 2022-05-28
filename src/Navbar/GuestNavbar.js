@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import {Route, useNavigate} from 'react-router-dom';
+import { Route, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
@@ -29,8 +29,12 @@ const ResponsiveAppBar = () => {
 
   const handleCloseNavMenu = (event) => {
     if (event.target.name === "Seanse") {
-      navigate("/redirect")
-      console.log("XD")
+      navigate("/redirect");
+      console.log("XD");
+    }
+    if (event.target.name === "O nas") {
+      navigate("/aboutus");
+      console.log("XD");
     }
   };
 
@@ -97,7 +101,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} name={page} onClick={handleCloseNavMenu}>
                   <Typography sx={{ m: 5 }} textAlign="center">
                     {page}
                   </Typography>

@@ -30,16 +30,17 @@ const ResponsiveAppBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (event) => {
+    if (event.target.name === "Seanse") {
+      console.log("XD");
+      navigate("/redirect");
+    }
+    if (event.target.name === "O nas") {
+      navigate("/aboutus");
+      console.log("XD");
+    }
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   const handleLogout = () => {
@@ -48,6 +49,11 @@ const ResponsiveAppBar = () => {
     setAnchorEl(null);
   };
   const handleMyAccount = () => {
+    navigate("/profile");
+    setAnchorEl(null);
+  };
+
+  const handleMyPaymentCards = () => {
     navigate("/profile");
     setAnchorEl(null);
   };
@@ -111,7 +117,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} name={page} onClick={handleCloseNavMenu}>
                   <Typography sx={{ m: 5 }} textAlign="center">
                     {page}
                   </Typography>
@@ -150,6 +156,7 @@ const ResponsiveAppBar = () => {
               <Button
                 size="medium"
                 key={page}
+                name = {page}
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 1,
@@ -191,8 +198,9 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profil</MenuItem>
-              <MenuItem onClick={handleMyAccount}>Moje konto</MenuItem>
+              <MenuItem onClick={handleMyAccount}>Profil</MenuItem>
+              <MenuItem onClick={handleMyPaymentCards}>Podpięte karty</MenuItem>
+              <MenuItem >Moje zamówienia</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
