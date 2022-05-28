@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/GuestNavbar";
 import Box from "@mui/material/Box";
 
 const theme = createTheme({

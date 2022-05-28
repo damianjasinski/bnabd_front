@@ -9,7 +9,7 @@ import ReserveCardItem from "./ReserveCardItem";
 import StepComponents from "./StepComponents";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/UserNavbar";
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";

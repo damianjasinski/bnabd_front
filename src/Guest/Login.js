@@ -8,10 +8,9 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/GuestNavbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
-import FormHelperText from "@mui/material/FormHelperText";
 import Footer from "./Footer";
 
 const axios = require("axios").default;

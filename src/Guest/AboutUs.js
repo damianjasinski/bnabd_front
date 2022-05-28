@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/GuestNavbar";
 import Footer from './Footer';
 import logo from "../Resource/cinema-09.jpg";
 import leftImage from "../Resource/aboutus1.jpg";

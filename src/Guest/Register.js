@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/GuestNavbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
 import Link from "@mui/material/Link";
