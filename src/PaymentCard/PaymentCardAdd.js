@@ -7,6 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Typography from "@mui/material/Typography";
 import { Container, Paper, Stack, TextField } from "@mui/material";
 import Footer from "../Guest/Footer";
+import { Navigate } from "react-router-dom";
 
 const axios = require("axios").default;
 
@@ -82,6 +83,12 @@ const PaymentCards = () => {
     } else return true;
   };
 
+    //check if user is logged in
+    if (!sessionStorage.getItem("jwt")) {
+      return <Navigate to="/redirect" />;
+    }
+  
+  
   return (
     <Paper style={backgroundStyle.paperContainer}>
       <Navbar />
