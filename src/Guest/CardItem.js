@@ -54,7 +54,7 @@ const CardItem = (props) => {
               </Typography>
             </CardContent>
           </Box>
-          <Box sx={{ mt: "auto", mx: "auto" }}>
+          <Box sx={{ mb:"auto", mx: "auto" }}>
             <CardActions>
               <Link
                 to={"/reserve"}
