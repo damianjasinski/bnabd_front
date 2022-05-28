@@ -10,6 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
+import Link from "@mui/material/Link";
 import Footer from "./Footer";
 const axios = require("axios").default;
 
@@ -27,18 +28,16 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-  border-style: solid;
-  border-width: 1.5px;
-  border-radius: 5px;
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
   padding: 8px 16px;
+  background-color: #dcdcdc;
   &:hover {
     background-color: #2f2f31;
   }
   &:focus {
-    background-color: gray;
+    background-color: #e87800;
   }
 `;
 
@@ -130,7 +129,7 @@ export default function Register() {
   if (sessionStorage.getItem("jwt")) {
     return <Navigate to="/redirect" />;
   }
-    
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
@@ -157,18 +156,17 @@ export default function Register() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent :"center",
-                bgcolor : "white"
+                justifyContent: "center",
+                bgcolor: "white",
               }}
               container
             >
               <Box
                 sx={{
                   mx: "auto",
-
                 }}
               >
-                <Typography variant="h2" component="h2" color = "black" sx = {{}}>
+                <Typography variant="h2" component="h2" color="black" sx={{}}>
                   Zarejestruj się
                 </Typography>
               </Box>
@@ -261,6 +259,14 @@ export default function Register() {
                       />
                     </Box>
                     <StyledButton onClick={handleSubmit}>Submit</StyledButton>
+                    <Link
+                      href="/login"
+                      underline="always"
+                      variant="overline"
+                      sx={{ mx: 2, color: "#e87800", fontWeight: "bold" }}
+                    >
+                      Masz już konto? Zaloguj się!
+                    </Link>
                   </Box>
                 </form>
               </Box>

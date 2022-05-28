@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TextField } from "@mui/material";
+import { Link, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
@@ -10,8 +10,8 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "./Navbar";
 import logo from "../Resource/cinema-09.jpg";
-import { Navigate } from "react-router-dom"
-import FormHelperText from '@mui/material/FormHelperText';
+import { Navigate } from "react-router-dom";
+import FormHelperText from "@mui/material/FormHelperText";
 import Footer from "./Footer";
 
 const axios = require("axios").default;
@@ -30,51 +30,49 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-  border-style:solid;
-  border-width:1.5px;
-  border-radius:5px;
+
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
   padding: 8px 16px;
+  background-color: #DCDCDC;
   &:hover {
     background-color: #2f2f31;
   }
   &:focus {
-    background-color: gray;
+    background-color: #e87800;
   }
 `;
 
 export default function Login() {
-
   const [response, setResponse] = useState([]);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [inputs, setInputs] = useState({ "email": "", "password": "" });
+  const [inputs, setInputs] = useState({ email: "", password: "" });
   const [logged, setLoggedIn] = useState();
 
   const loginRequest = () => {
-    const user = { email: inputs.email, password: inputs.password }
+    const user = { email: inputs.email, password: inputs.password };
     const data = axios
       .post("http://localhost:8080/api/login/signin", user)
       .then(function (response) {
-        sessionStorage.setItem("jwt", response.data.jwt)
-        sessionStorage.setItem("role", response.data.role)
-        sessionStorage.setItem("email", user.email)
-        sessionStorage.setItem("id", response.data.id)
-        setLoggedIn(true)
+        sessionStorage.setItem("jwt", response.data.jwt);
+        sessionStorage.setItem("role", response.data.role);
+        sessionStorage.setItem("email", user.email);
+        sessionStorage.setItem("id", response.data.id);
+        setLoggedIn(true);
       })
       .catch(function (error) {
         console.log(error);
       });
     setResponse(data.data);
-  }
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
-    console.log(inputs)
+    console.log(inputs);
   };
 
   const handleSubmit = (e) => {
@@ -82,14 +80,12 @@ export default function Login() {
 
     if (inputs.email === "") {
       setEmailError(true);
-    }
-    else {
+    } else {
       setEmailError(false);
     }
     if (inputs.password === "") {
       setPasswordError(true);
-    }
-    else {
+    } else {
       setPasswordError(false);
     }
     if (emailError == false && passwordError == false) {
@@ -99,18 +95,18 @@ export default function Login() {
 
   //check if user is logged in
   if (sessionStorage.getItem("jwt")) {
-    return <Navigate to="/redirect" />
+    return <Navigate to="/redirect" />;
   }
 
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-    
-      <Paper 
+
+      <Paper
         style={backgroundStyle.paperContainer}
-        sx={{ backgroundSize: "auto"  }}
+        sx={{ backgroundSize: "auto" }}
       >
-        <Box sx={{ mt: 2  }}>
+        <Box sx={{ mt: 2 }}>
           <Grid container spacing={2}>
             <Grid item md={7} sx={{}}>
               <Box
@@ -121,23 +117,24 @@ export default function Login() {
             </Grid>
 
             <Grid
-              item container
+              item
+              container
               style={{ minHeight: "100vh" }}
               md={5}
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent :"center",
-                bgcolor : "white"
+                justifyContent: "center",
+                bgcolor: "white",
               }}
             >
               <Box
                 sx={{
-                  mx: "auto"
+                  mx: "auto",
                 }}
-                >
-                <Typography variant="h2" component="h2" color = "black">
+              >
+                <Typography variant="h2" component="h2" color="black">
                   Zaloguj się
                 </Typography>
               </Box>
@@ -145,14 +142,12 @@ export default function Login() {
               <Box
                 sx={{
                   color: "text.secondary",
-
                 }}
               >
                 <form noValidate onSubmit={handleSubmit}>
-                  <Box  sx={{ mx: 5, p: 6 }}>
-                    <Box >
+                  <Box sx={{ mx: 5, p: 6 }}>
+                    <Box>
                       <TextField
-                        
                         onChange={handleChange}
                         label="e-mail"
                         name="email"
@@ -170,7 +165,6 @@ export default function Login() {
 
                     <Box sx={{ my: 3 }}>
                       <TextField
-                      
                         onChange={handleChange}
                         label="Hasło"
                         type="password"
@@ -182,12 +176,16 @@ export default function Login() {
                         InputProps={{ style: { fontSize: 18 } }}
                         InputLabelProps={{ style: { fontSize: 18 } }}
                         error={passwordError}
-                        helperText={passwordError ? "Źle wprowadzone hasło" : ""}
+                        helperText={
+                          passwordError ? "Źle wprowadzone hasło" : ""
+                        }
                         sx={{ width: "30vh" }}
                       />
-
                     </Box>
                     <StyledButton onClick={handleSubmit}>Submit</StyledButton>
+                    <Link href="/register" underline="always" variant = "overline" sx={{ mx: 2, color : "#e87800" ,fontWeight :"bold"}}>
+                      Nie masz konta? Zarejestruj się!
+                    </Link>
                   </Box>
                 </form>
               </Box>
