@@ -22,6 +22,7 @@ function Copyright() {
       sx={{
         mx: "auto",
         fontWeight: "bold",
+        pt : 1
       }}
     >
       {"Copyright © "}
@@ -40,6 +41,7 @@ const Footer = () => {
         sx={{
           display: "flex",
           position: "fixed",
+          textAlign:"center",
           width:"100%",
           bottom: 0,
           px: 2,
