@@ -38,9 +38,7 @@ const StyledButton = styled(Button)`
   &:hover {
     background-color: #2f2f31;
   }
-  &:focus {
-    background-color: #e87800;
-  }
+
 `;
 
 export default function Login() {

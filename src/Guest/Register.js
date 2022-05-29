@@ -36,9 +36,6 @@ const StyledButton = styled(Button)`
   &:hover {
     background-color: #2f2f31;
   }
-  &:focus {
-    background-color: #e87800;
-  }
 `;
 
 export default function Register() {
@@ -183,6 +180,7 @@ export default function Register() {
                       <TextField
                         onChange={handleChange}
                         label="Imię"
+                        helperText="2 znaki min."
                         variant="outlined"
                         color="warning"
                         fullWidth
@@ -198,6 +196,7 @@ export default function Register() {
                       <TextField
                         sx={{ width: "30vh" }}
                         onChange={handleChange}
+                        helperText="2 znaki min."
                         label="Nazwisko"
                         variant="outlined"
                         color="warning"
@@ -232,6 +231,7 @@ export default function Register() {
                         onChange={handleChange}
                         label="Hasło"
                         variant="outlined"
+                        helperText="Minimum 8 znaków"
                         color="warning"
                         fullWidth
                         name="password"
@@ -247,6 +247,7 @@ export default function Register() {
                         sx={{ width: "30vh" }}
                         onChange={handleChange}
                         label="Powtórz hasło"
+                        helperText="Hasłą muszą się zgadzać"
                         variant="outlined"
                         color="warning"
                         fullWidth

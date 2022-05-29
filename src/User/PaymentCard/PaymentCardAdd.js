@@ -1,12 +1,12 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Navbar from "../Navbar/UserNavbar";
+import Navbar from "../../Navbar/UserNavbar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Typography from "@mui/material/Typography";
 import { Container, Paper, Stack, TextField } from "@mui/material";
-import Footer from "../Guest/Footer";
+import Footer from "../../Guest/Footer";
 import { Navigate } from "react-router-dom";
 
 const axios = require("axios").default;
@@ -19,7 +19,7 @@ const backgroundStyle = {
   },
 };
 
-const PaymentCards = () => {
+const PaymentCardAdd = () => {
   const [inputs, setInputs] = React.useState({
     cardNumber: "",
     cvv: "",
@@ -193,4 +193,4 @@ const PaymentCards = () => {
     </Paper>
   );
 };
-export default PaymentCards;
+export default PaymentCardAdd;

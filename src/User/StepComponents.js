@@ -4,10 +4,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Order from "../Order/Order";
+import Seats from "./Order/Seats";
 import Box from "@mui/material/Box";
-import {useNavigate} from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const axios = require("axios").default;
 
@@ -31,17 +30,18 @@ const StepComponents = (props) => {
       });
   }, []);
 
-
   const selectCard = (event) => {
-      props.cardSetter(event.target.id)
+    props.cardSetter(event.target.id);
   };
 
   const addNewCard = () => {
-      navigate("/add/paymentcard")
-  }
+    navigate("/add/paymentcard");
+  };
 
   if (props.step == 0) {
-    return <Order seatSetter = {props.seatSetter} seanceId = {props.seanceId}></Order>;
+    return (
+      <Seats seatSetter={props.seatSetter} seanceId={props.seanceId}></Seats>
+    );
   } else {
     return (
       <Box
@@ -73,7 +73,7 @@ const StepComponents = (props) => {
                 </MenuItem>
               );
             })}
-            <MenuItem onClick = {addNewCard}>+ Dodaj nową kartę</MenuItem>;
+            <MenuItem onClick={addNewCard}>+ Dodaj nową kartę</MenuItem>;
           </Select>
           <FormHelperText>Select payment card</FormHelperText>
         </FormControl>

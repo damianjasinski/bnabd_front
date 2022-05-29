@@ -8,7 +8,7 @@ import SeatIcon from "./SeatIcon";
 const axios = require("axios").default;
 const iconSize = "large";
 
-const Order = (props) => {
+const Seats = (props) => {
   const [availableSeats, setAvailableSeats] = useState({});
   const [loading, setLoading] = useState(true);
   const [selectedId, setSelectedId] = useState(-1);
@@ -109,7 +109,7 @@ const Order = (props) => {
     </Container>
   );
 };
-export default Order;
+export default Seats;
 
 {
   /* <Grid
