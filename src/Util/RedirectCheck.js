@@ -6,7 +6,7 @@ export default function RedirectCheck() {
     return <Navigate to="/logged_view" />
   }
   else if (sessionStorage.getItem("jwt") && sessionStorage.getItem("role") == "ADMIN") {
-    return <Navigate to="/" />
+    return <Navigate to="/admin" />
   }
   else if (sessionStorage.getItem("jwt") == null ) {
     return <Navigate to= "/guest_view" />

@@ -14,6 +14,8 @@ import PaymentCards from "./User/PaymentCard/PaymentCardDisplay";
 import Profile from "./User/Profile";
 import AboutUs from "./Guest/AboutUs";
 import DisplayOrders from "./User/Order/DisplayOrders";
+import AdminPage from "./Admin/LandingPage";
+import AdminSeances from "./Admin/Seances";
 
 const Reroute = () => {
   return (
@@ -34,6 +36,9 @@ const Reroute = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/get/orders" element={<DisplayOrders />} />
+
+        <Route path="/admin/seances" element={<AdminSeances />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );
