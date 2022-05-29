@@ -57,6 +57,11 @@ const ResponsiveAppBar = () => {
     navigate("/get/paymentcards");
     setAnchorEl(null);
   };
+  const handleMyOrders = () => {
+    console.log("XD")
+    navigate("/get/orders");
+    setAnchorEl(null);
+  };
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "#1C1D1D" }}>
@@ -200,7 +205,7 @@ const ResponsiveAppBar = () => {
             >
               <MenuItem onClick={handleMyAccount}>Profil</MenuItem>
               <MenuItem onClick={handleMyPaymentCards}>Podpięte karty</MenuItem>
-              <MenuItem >Moje zamówienia</MenuItem>
+              <MenuItem onClick={handleMyOrders}>Moje zamówienia</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
