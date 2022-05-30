@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Container from "@mui/material/Container";
 import DrawerMenu from "./DrawerMenu";
 import { Button, IconButton } from "@mui/material";
-import ClearIcon from '@mui/icons-material/Clear';
+import ClearIcon from "@mui/icons-material/Clear";
 
 const columns = [
   {
@@ -37,7 +37,6 @@ const columns = [
     align: "right",
     renderCell: (
       <strong>
-
         <Button
           variant="contained"
           color="primary"
@@ -50,8 +49,8 @@ const columns = [
     ),
   },
 ];
-function createData(seans, seans_data, room) {
-  return { seans, seans_data, room };
+function createData(seans, seans_data, room, id) {
+  return { seans, seans_data, room, id };
 }
 const SeancesTableGrid = (props) => {
   const [page, setPage] = React.useState(0);
@@ -63,7 +62,8 @@ const SeancesTableGrid = (props) => {
       createData(
         element.titles.name,
         element.seanceDate,
-        element.room
+        element.room,
+        element.id
       )
     );
   });
@@ -75,10 +75,14 @@ const SeancesTableGrid = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const setSeanceToDelete = (id) => {
+    props.openModal(id)
+  };
+
   return (
     <Container>
       <TableContainer sx={{ maxHeight: 650 }}>
-        <Table stickyHeader aria-label="sticky table" size = "small">
+        <Table stickyHeader aria-label="sticky table" size="small">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -103,19 +107,24 @@ const SeancesTableGrid = (props) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
-                      const value = row[column.id]; 
+                      const value = row[column.id];
                       return (
                         <TableCell
-                      
                           key={column.id}
                           align={column.align}
                           sx={{ fontSize: 18, backgroundColor: "#303131" }}
                         >
-                          {column.id == "delete" ? <IconButton onClick = {() => console.log(row)}><ClearIcon fontSize = "large" ></ClearIcon></IconButton> : ""} {value}
+                          {column.id == "delete" ? (
+                            <IconButton onClick={() => setSeanceToDelete(row.id)}>
+                              <ClearIcon fontSize="large"></ClearIcon>
+                            </IconButton>
+                          ) : (
+                            ""
+                          )}{" "}
+                          {value}
                         </TableCell>
                       );
                     })}
-
                   </TableRow>
                 );
               })}
