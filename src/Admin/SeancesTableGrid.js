@@ -9,6 +9,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Container from "@mui/material/Container";
 import DrawerMenu from "./DrawerMenu";
+import { Button, IconButton } from "@mui/material";
+import ClearIcon from '@mui/icons-material/Clear';
 
 const columns = [
   {
@@ -27,6 +29,25 @@ const columns = [
     label: "Data seansu",
     minWidth: 150,
     align: "right",
+  },
+  {
+    id: "delete",
+    label: "Usuń",
+    minWidth: 150,
+    align: "right",
+    renderCell: (
+      <strong>
+
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          style={{ marginLeft: 16 }}
+        >
+          Open
+        </Button>
+      </strong>
+    ),
   },
 ];
 function createData(seans, seans_data, room) {
@@ -57,7 +78,7 @@ const SeancesTableGrid = (props) => {
   return (
     <Container>
       <TableContainer sx={{ maxHeight: 650 }}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table" size = "small">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -82,19 +103,19 @@ const SeancesTableGrid = (props) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = row[column.id]; 
                       return (
                         <TableCell
+                      
                           key={column.id}
                           align={column.align}
-                          sx={{ fontSize: 16, backgroundColor : "#303131" }}
+                          sx={{ fontSize: 18, backgroundColor: "#303131" }}
                         >
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {column.id == "delete" ? <IconButton onClick = {() => console.log(row)}><ClearIcon fontSize = "large" ></ClearIcon></IconButton> : ""} {value}
                         </TableCell>
                       );
                     })}
+
                   </TableRow>
                 );
               })}

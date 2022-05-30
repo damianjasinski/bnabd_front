@@ -45,16 +45,17 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <ThemeProvider theme={theme}>
-      <Container>
-        <Toolbar />
+      <Container >
+        <Toolbar sx = {{              backgroundColor : "orange"}} />
         <Divider />
         <List>
           {["Seanse", "Dodaj seans", "Uzytkownicy"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text} disablePadding >
               <ListItemButton
                 name={text}
                 id={index}
                 onClick={() => handleDrawerClick(index)}
+              
               >
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -119,6 +120,7 @@ function ResponsiveDrawer(props) {
                 boxSizing: "border-box",
                 width: drawerWidth,
               },
+
             }}
           >
             {drawer}
@@ -131,6 +133,7 @@ function ResponsiveDrawer(props) {
                 boxSizing: "border-box",
                 width: drawerWidth,
               },
+
             }}
             open
           >
