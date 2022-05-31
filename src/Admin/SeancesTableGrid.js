@@ -31,26 +31,20 @@ const columns = [
     align: "right",
   },
   {
+    id: "advertisementTime",
+    label: "Czas reklam ",
+    minWidth: 150,
+    align: "right",
+  },
+  {
     id: "delete",
     label: "Usuń",
     minWidth: 150,
     align: "right",
-    renderCell: (
-      <strong>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          style={{ marginLeft: 16 }}
-        >
-          Open
-        </Button>
-      </strong>
-    ),
   },
 ];
-function createData(seans, seans_data, room, id) {
-  return { seans, seans_data, room, id };
+function createData(seans, seans_data, room, advertisementTime, id) {
+  return { seans, seans_data, room, advertisementTime, id };
 }
 const SeancesTableGrid = (props) => {
   const [page, setPage] = React.useState(0);
@@ -62,8 +56,9 @@ const SeancesTableGrid = (props) => {
       createData(
         element.titles.name,
         element.seanceDate,
-        element.room,
-        element.id
+        element.roomId,
+        element.advertisementTime,
+        element.id,
       )
     );
   });

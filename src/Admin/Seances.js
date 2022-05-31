@@ -70,8 +70,8 @@ export default function StickyHeadTable(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
         <DrawerMenu></DrawerMenu>
+      <Container>
         <Box
           sx={{
             display: "flex",
@@ -79,6 +79,7 @@ export default function StickyHeadTable(props) {
             justifyContent: "center",
             flexDirection: "column",
             minHeight: "90vh",
+            mt:10
           }}
         >
           {showModal ? (

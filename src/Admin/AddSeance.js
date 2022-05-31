@@ -86,13 +86,13 @@ const AddSeance = () => {
       return false;
     }
 
-    if (!inputs.advertisementTime) {
-      setAdvTimeError(true);
+    if (!inputs.roomId) {
+      setRoomIdError(true);
       return false;
     }
 
-    if (!inputs.roomId) {
-      setRoomIdError(true);
+    if (!inputs.advertisementTime) {
+      setAdvTimeError(true);
       return false;
     }
     //TODO napisac request z add seance
@@ -203,7 +203,7 @@ const AddSeance = () => {
               color="warning"
               size="large"
               variant="outlined"
-              // onClick={refreshPage}
+              onClick={refreshPage}
               sx={{ color: "#e87800", fontWeight: "bold" }}
               startIcon={<DeleteIcon />}
             >
