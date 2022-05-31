@@ -98,6 +98,12 @@ export default function PersistentDrawerLeft() {
     else if (id === 2) {
       navigate("/admin/add-title")
     }
+    else if (id === 3) {
+      navigate("/admin/add-category")
+    }
+    else if (id === 4) {
+      navigate("/admin/get-users")
+    }
   };
 
 
@@ -148,7 +154,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Seanse", "Dodaj seans", "Dodaj tytuł", "Uzytkownicy"].map((text, index) => (
+          {["Seanse", "Dodaj seans", "Dodaj tytuł", "Dodaj kategorie", "Uzytkownicy"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
                 name={text}

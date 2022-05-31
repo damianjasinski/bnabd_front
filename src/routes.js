@@ -15,9 +15,11 @@ import Profile from "./User/Profile";
 import AboutUs from "./Guest/AboutUs";
 import DisplayOrders from "./User/Order/DisplayOrders";
 import AdminPage from "./Admin/LandingPage";
-import AdminSeances from "./Admin/Seances";
+import AdminSeances from "./Admin/DisplaySeances";
 import AdminAddSeance from "./Admin/AddSeance";
 import AdminAddTitle from "./Admin/AddTitle";
+import AdminAddCategory from "./Admin/AddCategory";
+import AdminDisplayUsers from "./Admin/DisplayUsers";
 
 const Reroute = () => {
   return (
@@ -41,6 +43,8 @@ const Reroute = () => {
 
         <Route path = "/admin/add-seance" element = {<AdminAddSeance />} />
         <Route path = "/admin/add-title" element = {<AdminAddTitle />} />
+        <Route path = "/admin/add-category" element = {<AdminAddCategory />} />
+        <Route path = "/admin/get-users" element = {<AdminDisplayUsers />} />
         <Route path="/admin/seances" element={<AdminSeances />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
