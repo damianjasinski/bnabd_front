@@ -93,6 +93,8 @@ const SeancesTableGrid = (props) => {
                     minWidth: column.minWidth,
                     fontSize: 18,
                     fontWeight: 600,
+                    color : "white",
+                    backgroundColor :"#995511"
                   }}
                 >
                   {column.label}
@@ -112,11 +114,11 @@ const SeancesTableGrid = (props) => {
                         <TableCell
                           key={column.id}
                           align={column.align}
-                          sx={{ fontSize: 18, backgroundColor: "#303131" }}
+                          sx={{ fontSize: 18, backgroundColor: "#333131", color : "white" }}
                         >
                           {column.id == "delete" ? (
                             <IconButton onClick={() => setSeanceToDelete(row.id)}>
-                              <ClearIcon fontSize="large"></ClearIcon>
+                              <ClearIcon fontSize="large" sx = {{color :'white'}}></ClearIcon>
                             </IconButton>
                           ) : (
                             ""
@@ -139,7 +141,8 @@ const SeancesTableGrid = (props) => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{ backgroundColor: "black " }}
+        style={{ backgroundColor: "#995511 ", color :"white" }}
+
       />
     </Container>
   );

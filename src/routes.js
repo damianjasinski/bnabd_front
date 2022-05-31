@@ -17,6 +17,7 @@ import DisplayOrders from "./User/Order/DisplayOrders";
 import AdminPage from "./Admin/LandingPage";
 import AdminSeances from "./Admin/Seances";
 import AdminAddSeance from "./Admin/AddSeance";
+import AdminAddTitle from "./Admin/AddTitle";
 
 const Reroute = () => {
   return (
@@ -39,6 +40,7 @@ const Reroute = () => {
         <Route path="/get/orders" element={<DisplayOrders />} />
 
         <Route path = "/admin/add-seance" element = {<AdminAddSeance />} />
+        <Route path = "/admin/add-title" element = {<AdminAddTitle />} />
         <Route path="/admin/seances" element={<AdminSeances />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>

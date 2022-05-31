@@ -3,9 +3,14 @@ import SeancesTableGrid from "./SeancesTableGrid";
 import Container from "@mui/material/Container";
 import DrawerMenu from "./DrawerMenu";
 import { Box } from "@mui/system";
-import DialogConfirm from "./DialogConfirm"
+import DialogConfirm from "./DialogConfirm";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 const axios = require("axios").default;
-
+const theme = createTheme({
+  palette: {
+    type: "light",
+  },
+});
 export default function StickyHeadTable(props) {
   const [seances, setSeances] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -31,53 +36,66 @@ export default function StickyHeadTable(props) {
   console.log(seances);
 
   const openModal = (id) => {
-    seances.forEach(element => {
+    seances.forEach((element) => {
       if (element.id === id) {
-        setSeanceToDelete(element)
+        setSeanceToDelete(element);
       }
     });
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
   const refreshPage = () => {
     window.location.reload(false);
   };
 
   const deleteSeanceRequest = (id) => {
-    const token = sessionStorage.getItem("jwt")
-    axios.delete("http://localhost:8080/api/seance/delete/" + id, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const token = sessionStorage.getItem("jwt");
+    axios
+      .delete("http://localhost:8080/api/seance/delete/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
-        console.log(response)
-        refreshPage()
+        console.log(response);
+        refreshPage();
       })
       .catch(function (error) {
         console.log(error);
-      })
-  }
+      });
+  };
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Container>
-      <DrawerMenu></DrawerMenu>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          minHeight: "90vh",
-
-        }}
-      >
-        {showModal ? <DialogConfirm showModalSetter={setShowModal} seance={seanceToDelete} sendRequestHandler={deleteSeanceRequest}></DialogConfirm> : ""}
-        <SeancesTableGrid openModal={openModal} seances={seances}></SeancesTableGrid>
-      </Box>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <DrawerMenu></DrawerMenu>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            minHeight: "90vh",
+          }}
+        >
+          {showModal ? (
+            <DialogConfirm
+              showModalSetter={setShowModal}
+              seance={seanceToDelete}
+              sendRequestHandler={deleteSeanceRequest}
+            ></DialogConfirm>
+          ) : (
+            ""
+          )}
+          <SeancesTableGrid
+            openModal={openModal}
+            seances={seances}
+          ></SeancesTableGrid>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
