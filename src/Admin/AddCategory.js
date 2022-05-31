@@ -93,6 +93,7 @@ const AddCategory = () => {
       .catch(function (error) {
         console.log(error);
       });
+      refreshPage()
   };
 
   if (loading) {

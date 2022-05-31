@@ -123,6 +123,7 @@ const AddSeance = () => {
       .catch(function (error) {
         console.log(error);
       });
+      refreshPage()
   };
 
   if (loading) {
