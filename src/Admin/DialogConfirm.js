@@ -22,7 +22,6 @@ export default function AlertDialog(props) {
     setOpen(false);
     props.sendRequestHandler(props.seance.id);
     props.showModalSetter(false);
-
   };
 
   return (

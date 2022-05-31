@@ -32,17 +32,30 @@ export default function StickyHeadTable(props) {
 
   const openModal = (id) => {
     seances.forEach(element => {
-      if(element.id === id) {
+      if (element.id === id) {
         setSeanceToDelete(element)
       }
     });
     setShowModal(true)
-    console.log(seanceToDelete)
-
   }
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
 
   const deleteSeanceRequest = (id) => {
-    console.log("delete " + id)
+    const token = sessionStorage.getItem("jwt")
+    axios.delete("http://localhost:8080/api/seance/delete/" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(function (response) {
+        console.log(response)
+        refreshPage()
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   if (loading) {
@@ -59,11 +72,11 @@ export default function StickyHeadTable(props) {
           justifyContent: "center",
           flexDirection: "column",
           minHeight: "90vh",
-          
+
         }}
       >
-        {showModal ? <DialogConfirm showModalSetter = {setShowModal} seance = {seanceToDelete} sendRequestHandler = {deleteSeanceRequest}></DialogConfirm> : ""}
-        <SeancesTableGrid openModal = {openModal} seances = {seances}></SeancesTableGrid>
+        {showModal ? <DialogConfirm showModalSetter={setShowModal} seance={seanceToDelete} sendRequestHandler={deleteSeanceRequest}></DialogConfirm> : ""}
+        <SeancesTableGrid openModal={openModal} seances={seances}></SeancesTableGrid>
       </Box>
     </Container>
   );

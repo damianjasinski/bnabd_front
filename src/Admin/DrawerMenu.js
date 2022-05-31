@@ -41,6 +41,9 @@ function ResponsiveDrawer(props) {
     if (id === 0) {
       navigate("/admin/seances");
     }
+    else if (id === 1) {
+      navigate("/admin/add-seance")
+    }
   };
 
   const drawer = (
