@@ -2,8 +2,7 @@ import React from 'react'
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "../Navbar/GuestNavbar";
 import Footer from './Footer';
-import logo from "../Resource/cinema-09.jpg";
-import leftImage from "../Resource/aboutus1.jpg";
+import leftImage from "../Resource/aboutus2.jpg";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,13 +30,6 @@ const theme = createTheme({
     },
   });
   
-  const backgroundStyle = {
-    paperContainer: {
-      backgroundImage: `url(${logo})`,
-      borderRadius: "0",
-    },
-  };
-
   
 
 const AboutUs = () => {
