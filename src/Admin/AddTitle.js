@@ -30,6 +30,7 @@ const AddTitle = () => {
   const [categories, setCategories] = React.useState([{}]);
   const [loading, setLoading] = React.useState(true);
 
+  const [imUrlError, setImUrlError] = React.useState(false);
   const [categoryError, setCategoryError] = React.useState(false);
   const [titleError, setTitleError] = React.useState(false);
   const [lengthError, setLengthError] = React.useState(false);
@@ -96,7 +97,8 @@ const AddTitle = () => {
     const title = {
       name: inputs.title,
       length: inputs.seanceLength,
-      categoriesId: [selectedCategory.id ]
+      categoriesId: [selectedCategory.id ],
+      imUrl : inputs.imUrl
     };
     axios
       .post("http://localhost:8080/api/titles/add", title, {
@@ -169,6 +171,18 @@ const AddTitle = () => {
               label="Długość filmu"
               name="seanceLength"
               helperText="Długość filmu"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <TextField
+              color="warning"
+              variant="filled"
+              error={imUrlError}
+              id="imUrl"
+              label="Link do zdjęcia"
+              name="imUrl"
+              helperText="Podaj poprawny link"
               onChange={handleChange}
             />
           </div>
