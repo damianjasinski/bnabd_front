@@ -1,8 +1,10 @@
 import * as React from "react";
 import SeancesTableGrid from "./SeancesTableGrid";
 import Container from "@mui/material/Container";
+
+import Paper from "@mui/material/Paper";
 import DrawerMenu from "./DrawerMenu";
-import { Box } from "@mui/system";
+import Box from '@mui/material/Box';
 import DialogConfirm from "./DialogConfirm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 const axios = require("axios").default;
@@ -69,7 +71,7 @@ export default function StickyHeadTable(props) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme ={theme}>
         <DrawerMenu></DrawerMenu>
       <Container>
         <Box
