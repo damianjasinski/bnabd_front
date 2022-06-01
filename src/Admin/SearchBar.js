@@ -13,11 +13,18 @@ const SearchBar = (props) => {
     const [rows, setRows] = React.useState([]);
     const [originalRows, setOriginalRows] = React.useState(props.rows)
     const [searched, setSearched] = React.useState("");
-    let filteredRows = [];
+    let filteredRows = [...originalRows];
     const requestSearch = (event) => {
-        filteredRows = originalRows.filter((row) => {
-            return row.titles.name.toLowerCase().includes(event.target.value.toLowerCase());
-        });
+        if (event.target.value.length == 0) {
+
+            filteredRows = [...originalRows]
+        }
+        else {
+            filteredRows = originalRows.filter((row) => {
+                return row.titles.name.toLowerCase().includes(event.target.value.toLowerCase());
+            });
+
+        }
     }
     const setFilteredRows = () => {
         props.filteredSetter(filteredRows)
