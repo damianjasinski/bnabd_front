@@ -10,7 +10,7 @@ export const notifyError = (msg) => toast.error(msg, {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme :"colored"
+    theme :"dark"
 });
 
 export const notifyWarn = (msg) => toast.warn(msg, {
@@ -21,7 +21,7 @@ export const notifyWarn = (msg) => toast.warn(msg, {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme : "colored"
+    theme : "dark"
 });
 export const notifySucc = (msg) => toast.success(msg, {
     position: "top-center",
@@ -31,5 +31,5 @@ export const notifySucc = (msg) => toast.success(msg, {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme : "colored"
+    theme : "dark"
 });
