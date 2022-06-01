@@ -1,7 +1,6 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import { styled, alpha } from '@mui/material/styles';
-import Search from "material-ui-search-bar";
 import Container from "@mui/material/Container";
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
