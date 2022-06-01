@@ -165,7 +165,8 @@ const ReserveSeance = () => {
                     variant="h4"
                     sx={{ mt: 2, mb: 1, textAlign: "center" }}
                   >
-                    All steps completed - you&apos;re finished
+                    Gotowe, zarezerwoano miejsce {selectedSeat} na seans {seance.titles.name}<br></br>
+                    <Typography variant = "h4" color = "text.disabled">data: {seance.seanceDate}</Typography>
                   </Typography>
                   <Box
                     sx={{

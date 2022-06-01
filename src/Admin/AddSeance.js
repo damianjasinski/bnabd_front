@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import AuthCheck from "./AuthCheck"
 const theme = createTheme({
   palette: {
     type: "light",
@@ -126,12 +127,14 @@ const AddSeance = () => {
       refreshPage()
   };
 
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <ThemeProvider theme={theme}>
+      <AuthCheck></AuthCheck>
       <Container>
         <DrawerMenu></DrawerMenu>
         <Box

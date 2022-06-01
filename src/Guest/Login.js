@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -12,6 +11,8 @@ import Navbar from "../Navbar/GuestNavbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
 import Footer from "./Footer";
+import { notifyError, notifySucc } from "../Util/Toasts";
+import ToastEmitter from "../Util/ToastEmitter";
 
 const axios = require("axios").default;
 
@@ -29,16 +30,14 @@ const backgroundStyle = {
 };
 
 const StyledButton = styled(Button)`
-
   color: #e87800;
   font-size: 18px;
   font-weight: bold;
   padding: 8px 16px;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   &:hover {
     background-color: #2f2f31;
   }
-
 `;
 
 export default function Login() {
@@ -60,7 +59,8 @@ export default function Login() {
         setLoggedIn(true);
       })
       .catch(function (error) {
-        console.log(error);
+        notifyError("Niepoprawne dane logowania");
+        console.log(error.response.data);
       });
     setResponse(data.data);
   };
@@ -97,8 +97,8 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastEmitter></ToastEmitter>
       <Navbar />
-
       <Paper
         style={backgroundStyle.paperContainer}
         sx={{ backgroundSize: "auto" }}
@@ -180,7 +180,12 @@ export default function Login() {
                       />
                     </Box>
                     <StyledButton onClick={handleSubmit}>Submit</StyledButton>
-                    <Link href="/register" underline="always" variant = "overline" sx={{ mx: 2, color : "#e87800" ,fontWeight :"bold"}}>
+                    <Link
+                      href="/register"
+                      underline="always"
+                      variant="overline"
+                      sx={{ mx: 2, color: "#e87800", fontWeight: "bold" }}
+                    >
                       Nie masz konta? Zarejestruj się!
                     </Link>
                   </Box>

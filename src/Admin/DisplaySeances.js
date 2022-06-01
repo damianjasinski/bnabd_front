@@ -5,6 +5,7 @@ import DrawerMenu from "./DrawerMenu";
 import { Box } from "@mui/system";
 import DialogConfirm from "./DialogConfirm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import AuthCheck from "./AuthCheck";
 const axios = require("axios").default;
 const theme = createTheme({
   palette: {
@@ -70,6 +71,7 @@ export default function StickyHeadTable(props) {
 
   return (
     <ThemeProvider theme={theme}>
+      <AuthCheck></AuthCheck>
         <DrawerMenu></DrawerMenu>
       <Container>
         <Box
