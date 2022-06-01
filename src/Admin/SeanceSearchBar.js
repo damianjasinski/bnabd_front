@@ -69,7 +69,7 @@ const SeanceSearchBar = (props) => {
     }));
     return (
         <Search >
-            <IconButton onClick={setFilteredRows}><SearchIcon /></IconButton>
+            <IconButton onClick={setFilteredRows}><SearchIcon fontSize ="large" /></IconButton>
 
             <StyledInputBase
                 onChange={(searchVal) => requestSearch(searchVal)}
