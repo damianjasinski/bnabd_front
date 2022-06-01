@@ -1,5 +1,6 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,9 +9,9 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Container from "@mui/material/Container";
-import DrawerMenu from "./DrawerMenu";
-import { Button, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import { Button, IconButton } from "@mui/material";
+import SeanceSearchBar from "./SeanceSearchBar";
 
 const columns = [
   {
@@ -43,39 +44,63 @@ const columns = [
     align: "right",
   },
 ];
+
 function createData(seans, seans_data, room, advertisementTime, id) {
   return { seans, seans_data, room, advertisementTime, id };
 }
 const SeancesTableGrid = (props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const rows = [];
+  const [originalRows, setOriginalRows] = React.useState(props.seances)
+  const [rows, setRows] = React.useState([])
 
-  props.seances.forEach((element) => {
-    rows.push(
-      createData(
-        element.titles.name,
-        element.seanceDate,
-        element.roomId,
-        element.advertisementTime,
-        element.id,
-      )
-    );
-  });
+  React.useEffect(() => {
+    let xdrows = []
+    props.seances.forEach((element) => {
+      xdrows.push(
+        createData(
+          element.titles.name,
+          element.seanceDate,
+          element.roomId,
+          element.advertisementTime,
+          element.id,
+        )
+      );
+      setRows(xdrows)
+    });
+  }, []);
+  console.log(rows)
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
+    setRowsPerPage(event.target.value);
     setPage(0);
   };
   const setSeanceToDelete = (id) => {
     props.openModal(id)
   };
+  const setSearched = (filteredRows) => {
+    let newRows = []
+    filteredRows.forEach((element) => {
+      newRows.push(
+        createData(
+          element.titles.name,
+          element.seanceDate,
+          element.roomId,
+          element.advertisementTime,
+          element.id,
+        )
+      );
+    });
+    setRows(newRows)
+  }
 
   return (
     <Container>
+      <SeanceSearchBar rows={originalRows} filteredSetter={setSearched} ></SeanceSearchBar>
       <TableContainer sx={{ maxHeight: 650 }}>
         <Table stickyHeader aria-label="sticky table" size="small">
           <TableHead>
@@ -88,8 +113,8 @@ const SeancesTableGrid = (props) => {
                     minWidth: column.minWidth,
                     fontSize: 18,
                     fontWeight: 600,
-                    color : "white",
-                    backgroundColor :"#995511"
+                    color: "white",
+                    backgroundColor: "#995511"
                   }}
                 >
                   {column.label}
@@ -109,11 +134,11 @@ const SeancesTableGrid = (props) => {
                         <TableCell
                           key={column.id}
                           align={column.align}
-                          sx={{ fontSize: 18, backgroundColor: "#333131", color : "white" }}
+                          sx={{ fontSize: 18, backgroundColor: "#333131", color: "white" }}
                         >
                           {column.id == "delete" ? (
                             <IconButton onClick={() => setSeanceToDelete(row.id)}>
-                              <ClearIcon fontSize="large" sx = {{color :'white'}}></ClearIcon>
+                              <ClearIcon fontSize="large" sx={{ color: 'white' }}></ClearIcon>
                             </IconButton>
                           ) : (
                             ""
@@ -136,7 +161,7 @@ const SeancesTableGrid = (props) => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{ backgroundColor: "#995511 ", color :"white" }}
+        style={{ backgroundColor: "#995511 ", color: "white" }}
 
       />
     </Container>

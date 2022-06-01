@@ -1,8 +1,10 @@
 import * as React from "react";
 import SeancesTableGrid from "./SeancesTableGrid";
 import Container from "@mui/material/Container";
+
+import Paper from "@mui/material/Paper";
 import DrawerMenu from "./DrawerMenu";
-import { Box } from "@mui/system";
+import Box from '@mui/material/Box';
 import DialogConfirm from "./DialogConfirm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AuthCheck from "./AuthCheck";
