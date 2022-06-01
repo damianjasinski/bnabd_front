@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 
 
-const SearchBar = (props) => {
+const SeanceSearchBar = (props) => {
 
     const [rows, setRows] = React.useState([]);
     const [originalRows, setOriginalRows] = React.useState(props.rows)
@@ -81,4 +81,4 @@ const SearchBar = (props) => {
     )
 }
 
-export default SearchBar
+export default SeanceSearchBar

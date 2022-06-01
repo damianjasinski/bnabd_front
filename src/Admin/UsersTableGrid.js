@@ -8,6 +8,8 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Container from "@mui/material/Container";
+import UsersSearchBar from "./UsersSearchBar";
+
 
 
 const columns = [
@@ -53,20 +55,28 @@ function createData(id, createdAt, email, role, firstName, surName) {
 const UsersTableGrid = (props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const rows = [];
+  const [originalRows, setOriginalRows] = React.useState(props.users)
+  const [rows, setRows] = React.useState([])
 
-  props.users.forEach((element) => {
-    rows.push(
-      createData(
-        element.id,
-        element.createdAt,
-        element.email,
-        element.role,
-        element.userFirstname,
-        element.userSurname
-      )
-    );
-  });
+  React.useEffect(() => {
+    let xdrows = []
+    props.users.forEach((element) => {
+      xdrows.push(
+        createData(
+          element.id,
+          element.createdAt,
+          element.email,
+          element.role,
+          element.userFirstname,
+          element.userSurname
+        )
+      );
+      setRows(xdrows)
+    });
+  }, []);
+  console.log(rows)
+
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -75,9 +85,28 @@ const UsersTableGrid = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const setSearched = (filteredRows) => {
+    console.log(filteredRows)
+    let newRows = []
+    filteredRows.forEach((element) => {
+      newRows.push(
+        createData(
+          element.id,
+          element.createdAt,
+          element.email, 
+          element.role,
+          element.userFirstname,
+          element.userSurname
+        )
+      );
+    });
+    setRows(newRows)
+  }
 
   return (
     <Container>
+      <UsersSearchBar rows={originalRows} filteredSetter={setSearched} ></UsersSearchBar>
+
       <TableContainer sx={{ maxHeight: 650 }}>
         <Table stickyHeader aria-label="sticky table" size="small">
           <TableHead>

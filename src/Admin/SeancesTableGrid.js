@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Container from "@mui/material/Container";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Button, IconButton } from "@mui/material";
-import SearchBar from "./SearchBar";
+import SeanceSearchBar from "./SeanceSearchBar";
 
 const columns = [
   {
@@ -100,9 +100,9 @@ const SeancesTableGrid = (props) => {
 
   return (
     <Container>
-      <SearchBar rows={originalRows} filteredSetter={setSearched} ></SearchBar>
+      <SeanceSearchBar rows={originalRows} filteredSetter={setSearched} ></SeanceSearchBar>
       <TableContainer sx={{ maxHeight: 650 }}>
-        <Table stickyHeader aria-label="sticky table" size="normal">
+        <Table stickyHeader aria-label="sticky table" size="small">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
