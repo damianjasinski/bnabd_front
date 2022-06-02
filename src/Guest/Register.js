@@ -10,6 +10,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Navbar from "../Navbar/GuestNavbar";
 import logo from "../Resource/cinema-09.jpg";
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Link from "@mui/material/Link";
 import Footer from "./Footer";
 const axios = require("axios").default;
@@ -40,6 +41,7 @@ const StyledButton = styled(Button)`
 
 export default function Register() {
   const [response, setResponse] = useState([]);
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     firstname: "",
     surname: "",
@@ -64,9 +66,10 @@ export default function Register() {
     const data = axios
       .post("http://localhost:8080/api/login/signup", user)
       .then(function (response) {
-        console.log(response.data);
+        
       })
       .catch(function (error) {
+        navigate("/login")
         console.log(error);
       });
     setResponse(data.data);
