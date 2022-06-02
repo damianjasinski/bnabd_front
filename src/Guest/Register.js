@@ -108,7 +108,7 @@ export default function Register() {
       setEmailError(false);
     }
 
-    if (inputs.password === "") {
+    if (inputs.password === "" || inputs.password.length < 8) {
       notifyError("Niepoprawne hasło");
       setPasswordError(true);
     } else {
