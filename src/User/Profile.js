@@ -225,6 +225,7 @@ const Profile = () => {
                   color: "black",
                   backgroundColor: "#e87800",
                   fontWeight: "bold",
+                  my : 1
                 }}
                 onClick={sendRequest}
                 endIcon={<SendIcon />}
