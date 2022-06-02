@@ -13,6 +13,8 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Link from "@mui/material/Link";
 import Footer from "./Footer";
+import ToastEmitter from "../Util/ToastEmitter";
+import { notifyError, notifySucc } from "../Util/Toasts";
 const axios = require("axios").default;
 
 const theme = createTheme({
@@ -86,24 +88,28 @@ export default function Register() {
     e.preventDefault();
 
     if (inputs.firstname === "") {
+      notifyError("Niepoprawne imie");
       setfirstNameError(true);
     } else {
       setfirstNameError(false);
     }
 
     if (inputs.surname === "") {
+      notifyError("Niepoprawne nazwisko");
       setsurnameError(true);
     } else {
       setsurnameError(false);
     }
 
     if (inputs.email === "") {
+      notifyError("Niepoprawny mail");
       setEmailError(true);
     } else {
       setEmailError(false);
     }
 
     if (inputs.password === "") {
+      notifyError("Niepoprawne hasło");
       setPasswordError(true);
     } else {
       setPasswordError(false);
@@ -111,6 +117,7 @@ export default function Register() {
 
     if (inputs.password2 === "") {
       setRetryPasswordError(true);
+      notifyError("Hasła się nie zgadzają");
     } else {
       setRetryPasswordError(false);
     }
