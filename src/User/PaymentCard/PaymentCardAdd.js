@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Container, Paper, Stack, TextField } from "@mui/material";
 import Footer from "../../Guest/Footer";
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const axios = require("axios").default;
 
@@ -29,6 +30,7 @@ const PaymentCardAdd = () => {
   const [cvvError, setCvvError] = React.useState(false);
   const [expDateError, setExpDateError] = React.useState(false);
   const token = sessionStorage.getItem("jwt")
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -58,6 +60,7 @@ const PaymentCardAdd = () => {
       })
       .then(function (response) {
         console.log(response.data);
+        navigate("/get/paymentcards")
       })
       .catch(function (error) {
         console.log(error);
